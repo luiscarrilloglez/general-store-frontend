@@ -1,0 +1,135 @@
+/* NavBar */
+.CandidateNavbar.navbar {
+  min-height: 78px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+.CandidateNavbar .navbar-brand img {
+  width: 130px;
+}
+
+.CandidateNavbar .navbar-nav .nav-link {
+  padding: 0;
+  margin-right: 3rem;
+  line-height: 50px;
+  color: var(--gray-dark-color);
+}
+
+.CandidateNavbar .navbar-nav .nav-link.active {
+  color: var(--blue-light-color);
+}
+
+/* User profile menu */
+.CandidateNavbar .UserProfile {
+  padding-left: 1rem;
+  margin-left: 1rem;
+  border-left: solid 2px var(--snow-color);
+}
+
+.CandidateNavbar .UserProfile .dropdown-toggle {
+  margin-right: 0 !important;
+}
+
+.CandidateNavbar .UserProfile .dropdown-menu {
+  right: -16px;
+  left: auto;
+  text-align: center;
+  top: 65px;
+  width: 195px;
+  padding: 12px;
+}
+
+.CandidateNavbar .UserProfile .dropdown-menu .nav-link {
+  margin-right: 0;
+  line-height: 35px;
+}
+
+/* Container */
+.CandidateContainer {
+  padding-top: 1rem;
+  margin-bottom: 6rem;
+}
+
+/* Footer */
+.CandidateFooter {
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  background-color: var(--snow-color);
+  border-top: solid 1px var(--gray-medium-color);
+  padding: 1rem 0;
+  text-align: center;
+}
+
+footer img {
+  width: 70px;
+  margin-right: 0.625rem;
+}
+
+footer span {
+  font-size: 0.75rem;
+}
+
+/* Desktop & Mobile */
+.DesktopElement {
+  display: inline-block;
+}
+
+/*******************************************************
+*            Media Queries (Bootstrap)                 *
+*******************************************************/
+
+/* X-Small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+}
+
+/* Small devices (landscape phones, less than 768px) */
+@media (max-width: 767.98px) {
+  .CandidateNavbar .navbar-nav .nav-link {
+    margin-right: 0.5rem;
+    line-height: 45px;
+  }
+
+  .CandidateNavbar .navbar-nav .nav-link span {
+    display: none;
+  }
+
+  .CandidateNavbar .UserProfile {
+    padding-left: 0.5rem;
+    margin-left: 0.5rem;
+  }
+}
+
+/* Medium devices (tablets, less than 992px) */
+@media (max-width: 991.98px) {
+  .CandidateNavbar.navbar {
+    min-height: 45px;
+    padding: 0 0.5rem;
+  }
+
+  .CandidateNavbar .navbar-brand img {
+    width: 90px;
+  }
+
+  .CandidateNavbar .navbar-nav .dropdown-menu {
+    position: absolute !important;
+    top: 45px;
+    right: -0.5rem;
+  }
+
+  .DesktopElement {
+    display: none;
+  }
+
+  .CandidateNavbar .UserProfile .UserImageLarge img {
+    width: 28px !important;
+    height: 28px !important;
+  }
+
+  .UserImageLarge .Initials {
+    width: 28px;
+    height: 28px;
+    line-height: 30px;
+    font-size: 0.75rem;
+  }
+}

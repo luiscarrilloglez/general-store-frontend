@@ -1,0 +1,136 @@
+/* NavBar */
+.MainNavbar.navbar {
+  min-height: 78px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+.MainNavbar.navbar-light .navbar-nav .nav-link {
+  color: var(--gray-dark-color);
+}
+
+.MainNavbar .navbar-brand {
+  margin-left: 1rem;
+}
+
+.MainNavbar .navbar-brand img {
+  width: 130px;
+}
+
+.MainNavbar .navbar-text {
+  color: var(--gray-dark-color) !important;
+  font-weight: bold;
+}
+
+.MainNavbar .nav-link {
+  margin-right: 2.188rem;
+  font-size: 1rem;
+}
+
+.MainNavbar .nav-link img {
+  margin-right: 0.625rem;
+  width: 20px;
+}
+
+.MainNavbar .nav-link.active {
+  border-bottom: 6px solid var(--blue-light-color);
+  margin-bottom: -1.188rem;
+}
+
+.MainNavbar .nav-user-ml {
+  border-left: solid 2px var(--snow-color);
+}
+
+/* User profile menu */
+.MainNavbar .UserProfile {
+  margin-left: 1rem;
+}
+
+.MainNavbar .UserProfile .dropdown-menu {
+  right: -16px;
+  left: auto;
+  text-align: center;
+  top: 65px;
+  width: 195px;
+  padding: 12px;
+}
+
+.MainNavbar .UserProfile .nav-link img {
+  margin-right: 0;
+}
+
+.MainNavbar .UserProfile .nav-link {
+  margin-right: 0;
+}
+
+/* Footer */
+footer img {
+  width: 70px;
+  margin-right: 0.625rem;
+}
+
+footer span {
+  font-size: 0.75rem;
+}
+
+.TotalResults {
+  color: var(--blue-dark-color);
+  font-size: 1.5rem;
+}
+
+/* Edit Button for editable sections */
+.Editable .EditButton {
+  opacity: 0;
+  transition: all 200ms;
+}
+
+.Editable:hover .EditButton {
+  opacity: 1;
+}
+
+.EditButton {
+  border-width: 0;
+  background-color: var(--snow-color);
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+  text-align: center;
+  font-size: 16px;
+}
+
+/*******************************************************
+*            Media Queries (Bootstrap)                 *
+*******************************************************/
+
+/* X-Small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+}
+
+/* Small devices (landscape phones, less than 768px) */
+@media (max-width: 767.98px) {
+  .MainNavbar .nav-link.active {
+    border-bottom: 3px solid var(--blue-light-color);
+    margin-bottom: 0;
+  }
+}
+
+/* Medium devices (tablets, less than 992px) */
+@media (max-width: 991.98px) {
+  .MainNavbar .nav-link.active {
+    border-bottom: 6px solid var(--blue-light-color);
+    margin-bottom: -1.2rem;
+  }
+}
+
+/* Large devices (desktops, less than 1200px) */
+@media (max-width: 1199.98px) {
+}
+
+/* X-Large devices (large desktops, more than 1200px) */
+@media (min-width: 1200px) {
+  .MainContainer {
+    padding-right: 4rem;
+    padding-left: 4rem;
+    padding-top: 1.563rem;
+    padding-bottom: 4rem;
+  }
+}

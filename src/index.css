@@ -1,0 +1,31 @@
+html,
+body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  font-family: Ubuntu;
+  font-size: 16px;
+  color: var(--gray-dark-color) !important;
+  background-color: var(--snow-color);
+}
+
+h1,
+h2 {
+  color: var(--blue-medium-color);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--gray-medium-color);
+  border-radius: 8px;
+}

@@ -1,0 +1,379 @@
+h1 {
+  color: var(--blue-dark-color);
+  font-size: 1.75rem;
+  font-weight: bold;
+}
+
+h2 {
+  color: var(--gray-dark-color);
+  font-size: 1.125rem;
+  font-weight: bold;
+}
+
+pre {
+  font-family: Ubuntu;
+  font-size: 0.813rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.54;
+  letter-spacing: normal;
+  color: var(--gray-dark-color);
+}
+
+a {
+  color: var(--blue-light-color);
+}
+a:hover {
+  color: var(--blue-medium-color);
+  text-decoration: none;
+}
+
+/* Cards */
+.CardBorder {
+  border: 1px solid rgba(212, 217, 226, 0.8) !important;
+}
+
+.card-footer {
+  background-color: transparent;
+  text-align: center;
+  margin: 1rem 1rem 0;
+}
+
+/* Buttons */
+.btn,
+.btn:focus {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2) !important;
+}
+
+.btn-link,
+.btn-link.focus,
+.btn-link:focus {
+  text-decoration: none;
+  box-shadow: none !important;
+  color: var(--blue-light-color);
+}
+
+.btn-link:hover {
+  text-decoration: none;
+  color: var(--blue-medium-color);
+}
+
+.btn-primary {
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: bold;
+  padding: 0.75rem 1.125rem;
+  border-radius: 5px;
+  border: solid 1px var(--blue-medium-color);
+  background-color: var(--blue-medium-color);
+  color: var(--white-color);
+}
+
+.btn-primary:hover {
+  border: solid 1px var(--blue-light-color);
+  background-color: var(--blue-light-color);
+  text-decoration: none;
+}
+
+.btn-primary:disabled {
+  color: var(--oxford-color);
+  border: none;
+  background-color: var(--gray-medium-color);
+  text-decoration: none;
+}
+
+.btn-secondary {
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: normal;
+  padding: 0.75rem 1.125rem;
+  border-radius: 5px;
+  border: solid 1px var(--blue-medium-color);
+  background-color: var(--white-color);
+  color: var(--blue-medium-color);
+}
+
+.btn-secondary:not(:disabled):not(.disabled).active,
+.btn-secondary:not(:disabled):not(.disabled):active,
+.show > .btn-secondary.dropdown-toggle,
+.btn-secondary.focus,
+.btn-secondary:focus {
+  color: var(--blue-medium-color);
+  background-color: var(--white-color);
+  border-color: var(--blue-medium-color);
+}
+
+.btn-secondary:hover {
+  font-weight: bold;
+  background-color: var(--blue-medium-color);
+  color: var(--white-color);
+  text-decoration: none;
+}
+
+.AddButton {
+  width: 180px;
+}
+
+.CancelButton {
+  width: 125px;
+}
+
+.SaveButton {
+  width: 125px;
+}
+
+/* Form Controls */
+.form-group.required .form-label:after {
+  font-size: 1rem;
+  color: var(--warning-color);
+  content: "*";
+  position: absolute;
+  margin-left: 0.094rem;
+}
+
+.form-label {
+  font-size: 0.75rem;
+  line-height: 0.75rem;
+  color: var(--oxford-color);
+  margin-bottom: 0.563rem;
+}
+
+.form-control {
+  height: 50px;
+  border-radius: 0;
+  border: solid 1px var(--gray-medium-color);
+  font-size: 1rem;
+  font-weight: normal;
+  color: var(--gray-dark-color);
+  padding: 0.875rem;
+}
+
+.form-control:focus {
+  border-color: var(--blue-light-color);
+  color: var(--gray-dark-color);
+}
+
+.is-invalid .ReactSelect__control {
+  border-color: var(--warning-color) !important;
+}
+
+.ReactSelect__control {
+  border-radius: 0 !important;
+  min-height: 50px !important;
+}
+
+.ReactSelect__control--is-focused {
+  border-color: var(--blue-light-color) !important;
+  box-shadow: none !important;
+}
+
+.ReactSelect__menu {
+  z-index: 11 !important;
+}
+
+.react-datepicker-wrapper {
+  display: block !important;
+}
+
+/* Remove bootstrap focus style */
+:focus {
+  outline: -webkit-focus-ring-color auto 0 !important;
+}
+
+input:focus,
+textarea:focus,
+select:focus,
+button:focus {
+  box-shadow: none !important;
+}
+
+.custom-control-input:focus ~ .custom-control-label::before {
+  box-shadow: none !important;
+}
+
+.custom-checkbox {
+  z-index: 0 !important;
+}
+
+.custom-checkbox .custom-control-label::before {
+  border-radius: 0 !important;
+}
+
+/* Form Validations */
+
+.form-control.is-invalid,
+.was-validated .form-control:invalid {
+  border-color: var(--warning-color);
+  padding-right: 0.875rem;
+  background-image: none;
+}
+
+.form-control.is-invalid:focus,
+.was-validated .form-control:invalid:focus {
+  border-color: var(--warning-color);
+  box-shadow: none;
+}
+
+.invalid-feedback {
+  color: var(--warning-color);
+  font-size: 0.75rem;
+}
+
+/* Colors */
+.BlueText {
+  color: var(--blue-dark-color);
+}
+
+.BlueTextMedium {
+  color: var(--blue-medium-color);
+}
+
+.text-muted {
+  color: var(--oxford-color) !important;
+}
+
+/* Screen */
+.ScreenHeader {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0;
+}
+
+.ScreenTitle {
+  padding: 1rem 0 !important;
+  margin: 0 !important;
+}
+
+.ScreenSubtitle {
+  font-size: 1.125rem !important;
+}
+
+/* Modals */
+@media (min-width: 768px) {
+  .modal-content {
+    width: 37.5rem;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+  }
+
+  .modal-content.FullScreen {
+    width: 95vw !important;
+  }
+}
+.modal-content {
+  border: 0;
+  border-radius: 0;
+}
+
+.modal-header {
+  padding: 3rem 3rem 1.5rem 3rem;
+  border-bottom: 0;
+  flex-basis: content;
+}
+
+.modal-title {
+  font-size: 1.75rem;
+  font-weight: bold;
+  line-height: 1.18;
+  flex: 1;
+}
+
+.modal-header .close {
+  padding: 0;
+  margin-top: -1rem;
+  margin-right: -0.313rem;
+  line-height: 3.75rem;
+  font-size: 3.4rem;
+  font-weight: 300;
+  color: var(--gray-dark-color);
+  opacity: 1;
+}
+
+.modal-header .ActionButton {
+  padding: 0;
+  margin-top: -0.75rem;
+  line-height: 3.75rem;
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: var(--gray-dark-color);
+  opacity: 1;
+  background-color: transparent;
+  border: 0;
+}
+
+.modal-header button {
+  margin-left: 1rem !important;
+}
+
+.modal-body {
+  padding: 1.5rem 3rem;
+}
+
+.modal-footer {
+  padding: 1.5rem 3rem 3rem 3rem;
+  border-top: 0;
+}
+
+.modal-footer > button {
+  margin: 0 0 0 1rem;
+}
+
+/* Popovers */
+.popover {
+  z-index: 1030;
+}
+
+/* Word Wrap*/
+.WordWrap {
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+
+/* Skills */
+.Skill {
+  font-size: 13px;
+  font-weight: lighter;
+}
+
+/* Carousel */
+.carousel-caption {
+  color: var(--gray-dark-color);
+}
+
+/* Alerts */
+.alert {
+  border-radius: 0;
+  padding: 0.75rem;
+  display: flex;
+  align-items: center;
+}
+
+.alert svg {
+  font-size: 1.125rem;
+  margin-right: 0.5rem;
+}
+
+.alert-light {
+  border-color: var(--snow-color);
+  background-color: var(--snow-color);
+  color: var(--gray-dark-color);
+}
+
+/* React Quill (Editor) */
+.ql-editor {
+  font-size: 14px;
+  font-family: "Ubuntu";
+}
+
+/* Badges*/
+.GreenBadge {
+  font-size: 1rem !important;
+  margin-left: 0.93rem;
+  padding: 0.43rem 0.43rem;
+  color: var(--snow-color);
+  background-color: var(--green-light-color);
+}
