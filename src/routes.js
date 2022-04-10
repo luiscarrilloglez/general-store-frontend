@@ -6,19 +6,41 @@ const routes = [
     element: HomePage,
   },
   {
-    path: "/1",
+    path: "/steaks",
     element: HomePage,
   },
   {
-    path: "/2",
+    path: "/black-brangus",
     element: HomePage,
   },
   {
-    path: "/3",
+    path: "/dried-meat",
     element: HomePage,
   },
   {
-    path: "/4",
+    path: "/accessories",
+    element: HomePage,
+  },
+
+  // Routes for admin
+  {
+    path: "/admin/",
+    element: HomePage,
+  },
+  {
+    path: "/admin/steaks",
+    element: HomePage,
+  },
+  {
+    path: "/admin/black-brangus",
+    element: HomePage,
+  },
+  {
+    path: "/admin/dried-meat",
+    element: HomePage,
+  },
+  {
+    path: "/admin/accessories",
     element: HomePage,
   },
 ];

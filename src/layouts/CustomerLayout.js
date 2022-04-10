@@ -6,52 +6,45 @@ import Nav from "react-bootstrap/Nav";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
-import { Link } from "react-router-dom";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 import "layouts/styles/Main.css";
 
 const CustomerLayout = (WrappedComponent) => {
   return () => {
-    const menuOptions = () => {
-      const options = (
-        <Nav>
-          <NavLink className="nav-link" to="/">
-            Principal
-          </NavLink>
-          <NavLink className="nav-link" to="/1">
-            Categoria 1
-          </NavLink>
-          <NavLink className="nav-link" to="/2">
-            Categoria 2
-          </NavLink>
-          <NavLink className="nav-link" to="/3">
-            Categoria 3
-          </NavLink>
-          <NavLink className="nav-link" to="/4">
-            Categoria 4
-          </NavLink>
-        </Nav>
-      );
-
-      return options;
-    };
-
     return (
       <>
         <Navbar bg="white" expand="lg" className="sticky-top MainNavbar">
-          <Link className="navbar-brand" to="/">
-            <Image src="/assets/rancho17.webp" alt="Rancho el 17" />
-          </Link>
+          <Container>
+            <Link className="navbar-brand" to="/">
+              <Image src="/assets/rancho17.webp" alt="Rancho el 17" />
+            </Link>
 
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
-          <Navbar.Collapse
-            id="basic-navbar-nav"
-            className="justify-content-end"
-          >
-            {menuOptions()}
-          </Navbar.Collapse>
+            <Navbar.Collapse
+              id="basic-navbar-nav"
+              className="justify-content-center"
+            >
+              <Nav>
+                <NavLink className="nav-link" to="/">
+                  Best Sellers
+                </NavLink>
+                <NavLink className="nav-link" to="/steaks">
+                  Steaks
+                </NavLink>
+                <NavLink className="nav-link" to="/black-brangus">
+                  Black Brangus
+                </NavLink>
+                <NavLink className="nav-link" to="/dried-meat">
+                  Dried Meat
+                </NavLink>
+                <NavLink className="nav-link" to="/accessories">
+                  Accessories
+                </NavLink>
+              </Nav>
+            </Navbar.Collapse>
+          </Container>
         </Navbar>
 
         <Container className="MainContainer" fluid={true}>
