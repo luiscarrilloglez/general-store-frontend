@@ -6,52 +6,55 @@ import Nav from "react-bootstrap/Nav";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
-import { Link } from "react-router-dom";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
+import { categories } from "constants.js";
 import "layouts/styles/Main.css";
 
-const AdminLayout = (WrappedComponent) => {
+const CustomerLayout = (WrappedComponent) => {
   return () => {
-    const menuOptions = () => {
-      const options = (
-        <Nav>
-          <NavLink className="nav-link" to="/admin/">
-            Principal
-          </NavLink>
-          <NavLink className="nav-link" to="/admin/1">
-            Categoria 1
-          </NavLink>
-          <NavLink className="nav-link" to="/admin/2">
-            Categoria 2
-          </NavLink>
-          <NavLink className="nav-link" to="/admin/3">
-            Categoria 3
-          </NavLink>
-          <NavLink className="nav-link" to="/admin/4">
-            Categoria 4
-          </NavLink>
-        </Nav>
-      );
-
-      return options;
-    };
-
     return (
       <>
         <Navbar bg="white" expand="lg" className="sticky-top MainNavbar">
-          <Link className="navbar-brand" to="/">
-            <Image src="/assets/rancho17.webp" alt="Rancho el 17" />
-          </Link>
+          <Container>
+            <Link className="navbar-brand" to="/admin">
+              <Image src="/assets/rancho17.webp" alt="Rancho el 17" />
+            </Link>
 
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
-          <Navbar.Collapse
-            id="basic-navbar-nav"
-            className="justify-content-end"
-          >
-            {menuOptions()}
-          </Navbar.Collapse>
+            <Navbar.Collapse
+              id="basic-navbar-nav"
+              className="justify-content-center"
+            >
+              <Nav>
+                <NavLink
+                  className="nav-link"
+                  to={`/admin/collections?category=${categories.STEAKS.key}`}
+                >
+                  Steaks
+                </NavLink>
+                <NavLink
+                  className="nav-link"
+                  to={`/admin/collections?category=${categories.BLACK_BRANGUS.key}`}
+                >
+                  Black Brangus
+                </NavLink>
+                <NavLink
+                  className="nav-link"
+                  to={`/admin/collections?category=${categories.DRIED_MEAT.key}`}
+                >
+                  Dried Meat
+                </NavLink>
+                <NavLink
+                  className="nav-link"
+                  to={`/admin/collections?category=${categories.ACCESSORIES.key}`}
+                >
+                  Accessories
+                </NavLink>
+              </Nav>
+            </Navbar.Collapse>
+          </Container>
         </Navbar>
 
         <Container className="MainContainer" fluid={true}>
@@ -68,7 +71,7 @@ const AdminLayout = (WrappedComponent) => {
           <Container>
             <Row>
               <Col>
-                <Image src="/assets/rancho17.png" alt="Rancho el 17" />
+                <Image src="/assets/rancho17.webp" alt="Rancho el 17" />
                 <span className="text-muted">
                   &copy; All rights reserved. Copyright{" "}
                   {new Date().getFullYear()}. Powered by @luiscarrilloglez
@@ -82,4 +85,4 @@ const AdminLayout = (WrappedComponent) => {
   };
 };
 
-export default AdminLayout;
+export default CustomerLayout;

@@ -1,25 +1,16 @@
 import HomePage from "pages/HomePage";
+import CollectionPage from "pages/CollectionPage";
+//import CheckoutPage from "pages/CheckoutPage";
 
 const routes = [
+  // Routes for customer
   {
     path: "/",
     element: HomePage,
   },
   {
-    path: "/steaks",
-    element: HomePage,
-  },
-  {
-    path: "/black-brangus",
-    element: HomePage,
-  },
-  {
-    path: "/dried-meat",
-    element: HomePage,
-  },
-  {
-    path: "/accessories",
-    element: HomePage,
+    path: "/collections",
+    element: CollectionPage,
   },
 
   // Routes for admin
@@ -28,20 +19,8 @@ const routes = [
     element: HomePage,
   },
   {
-    path: "/admin/steaks",
-    element: HomePage,
-  },
-  {
-    path: "/admin/black-brangus",
-    element: HomePage,
-  },
-  {
-    path: "/admin/dried-meat",
-    element: HomePage,
-  },
-  {
-    path: "/admin/accessories",
-    element: HomePage,
+    path: "/admin/collections",
+    element: CollectionPage,
   },
 ];
 

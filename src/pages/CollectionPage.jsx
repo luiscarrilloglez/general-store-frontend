@@ -1,6 +1,6 @@
 import CollectionComponent from "components/CollectionComponent";
 
-const HomePage = () => {
+const CollectionPage = () => {
   return (
     <>
       <CollectionComponent />
@@ -8,4 +8,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default CollectionPage;

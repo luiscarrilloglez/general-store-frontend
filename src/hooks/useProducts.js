@@ -7,7 +7,7 @@ export const useProducts = (category) => {
 
   const loadProducts = useCallback(async () => {
     setLoadingProducts(true);
-    const data = await getProducts(category);
+    const data = await getProducts({ category });
     setProducts(data);
     setLoadingProducts(false);
   }, [category]);

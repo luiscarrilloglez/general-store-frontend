@@ -3,12 +3,15 @@ import PropTypes from "prop-types";
 import CardGroup from "react-bootstrap/CardGroup";
 
 import ProductCardComponent from "components/ProductCardComponent";
+import LoadingComponent from "components/LoadingComponent";
 import { useProducts } from "hooks/useProducts";
 
 const ProductsByCategoryComponent = (props) => {
-  const { category } = props;
+  const { categoryKey } = props;
 
-  const { products } = useProducts(category);
+  const { products, loadingProducts } = useProducts(categoryKey);
+
+  if (loadingProducts) return <LoadingComponent />;
 
   return (
     <CardGroup>
@@ -20,7 +23,7 @@ const ProductsByCategoryComponent = (props) => {
 };
 
 ProductsByCategoryComponent.propTypes = {
-  category: PropTypes.string,
+  categoryKey: PropTypes.string,
 };
 
 export default ProductsByCategoryComponent;

@@ -1,18 +1,17 @@
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { toast } from "react-toastify";
 
-import NotFoundPage from "pages/NotFoundPage";
-
-import routes from "routes.js";
 import AdminLayout from "layouts/AdminLayout";
 import CustomerLayout from "layouts/CustomerLayout";
+import NotFoundPage from "pages/NotFoundPage";
+import { useIsAdmin } from "hooks/useQuery";
+
+import routes from "routes.js";
 
 toast.configure();
 
 const App = () => {
-  const location = useLocation();
-
-  const isAdmin = location.pathname.includes("/admin");
+  const isAdmin = useIsAdmin();
 
   // Set layout by role
   let layout = isAdmin ? AdminLayout : CustomerLayout;
@@ -20,10 +19,10 @@ const App = () => {
   return (
     <Routes>
       {routes.map((route) => {
-        const NewElement = layout(route.element);
+        const Element = layout(route.element);
 
         return (
-          <Route key={route.path} path={route.path} element={<NewElement />} />
+          <Route key={route.path} path={route.path} element={<Element />} />
         );
       })}
       <Route path="*" element={<NotFoundPage />} />

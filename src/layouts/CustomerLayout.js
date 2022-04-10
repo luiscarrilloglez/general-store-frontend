@@ -8,6 +8,7 @@ import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
 import { Link, NavLink } from "react-router-dom";
 
+import { categories } from "constants.js";
 import "layouts/styles/Main.css";
 
 const CustomerLayout = (WrappedComponent) => {
@@ -27,19 +28,28 @@ const CustomerLayout = (WrappedComponent) => {
               className="justify-content-center"
             >
               <Nav>
-                <NavLink className="nav-link" to="/">
-                  Best Sellers
-                </NavLink>
-                <NavLink className="nav-link" to="/steaks">
+                <NavLink
+                  className="nav-link"
+                  to={`/collections?category=${categories.STEAKS.key}`}
+                >
                   Steaks
                 </NavLink>
-                <NavLink className="nav-link" to="/black-brangus">
+                <NavLink
+                  className="nav-link"
+                  to={`/collections?category=${categories.BLACK_BRANGUS.key}`}
+                >
                   Black Brangus
                 </NavLink>
-                <NavLink className="nav-link" to="/dried-meat">
+                <NavLink
+                  className="nav-link"
+                  to={`/collections?category=${categories.DRIED_MEAT.key}`}
+                >
                   Dried Meat
                 </NavLink>
-                <NavLink className="nav-link" to="/accessories">
+                <NavLink
+                  className="nav-link"
+                  to={`/collections?category=${categories.ACCESSORIES.key}`}
+                >
                   Accessories
                 </NavLink>
               </Nav>
