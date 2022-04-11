@@ -15,7 +15,7 @@ export const getProducts = async (queryParams) => {
 export const getProduct = async (id) => {
   try {
     const response = await axios.get(SERVER_URL + id);
-    if (response.status === 200) return await response.json();
+    if (response.status === 200) return response.data;
     else return false;
   } catch (error) {
     console.log(error);
@@ -25,7 +25,7 @@ export const getProduct = async (id) => {
 export const saveProduct = async (product) => {
   try {
     const response = await axios.post(SERVER_URL, product);
-    if (response.status === 201) return await response.json();
+    if (response.status === 201) return response.data;
     else return false;
   } catch (error) {
     console.log(error);
@@ -35,7 +35,7 @@ export const saveProduct = async (product) => {
 export const updateProduct = async (id, product) => {
   try {
     const response = await axios.post(SERVER_URL + id, product);
-    if (response.status === 200) return await response.json();
+    if (response.status === 200) return response.data;
     else return false;
   } catch (error) {
     console.log(error);
