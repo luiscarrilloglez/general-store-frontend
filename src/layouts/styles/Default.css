@@ -11,7 +11,7 @@ h2 {
 }
 
 pre {
-  font-family: Ubuntu;
+  font-family: "Open Sans";
   font-size: 0.813rem;
   font-weight: normal;
   font-stretch: normal;
@@ -320,28 +320,12 @@ button:focus {
   margin: 0 0 0 1rem;
 }
 
-/* Popovers */
-.popover {
-  z-index: 1030;
-}
-
 /* Word Wrap*/
 .WordWrap {
   white-space: pre-wrap;
   white-space: -moz-pre-wrap;
   white-space: -o-pre-wrap;
   word-wrap: break-word;
-}
-
-/* Skills */
-.Skill {
-  font-size: 13px;
-  font-weight: lighter;
-}
-
-/* Carousel */
-.carousel-caption {
-  color: var(--gray-dark-color);
 }
 
 /* Alerts */
@@ -361,19 +345,4 @@ button:focus {
   border-color: var(--snow-color);
   background-color: var(--snow-color);
   color: var(--gray-dark-color);
-}
-
-/* React Quill (Editor) */
-.ql-editor {
-  font-size: 14px;
-  font-family: "Ubuntu";
-}
-
-/* Badges*/
-.GreenBadge {
-  font-size: 1rem !important;
-  margin-left: 0.93rem;
-  padding: 0.43rem 0.43rem;
-  color: var(--snow-color);
-  background-color: var(--green-light-color);
 }

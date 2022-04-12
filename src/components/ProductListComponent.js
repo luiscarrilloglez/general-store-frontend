@@ -6,14 +6,19 @@ import Col from "react-bootstrap/Col";
 import ProductCardComponent from "components/ProductCardComponent";
 
 const ProductsListComponent = (props) => {
-  const { products } = props;
+  const { products, isAdmin, onEdit, onDelete } = props;
 
   return (
-    <Row xs={1} md={4} className="g-4">
-      {products?.map((product) => {
+    <Row xs={1} md={2} lg={3} xxl={4} className="g-4">
+      {products?.map((product, index) => {
         return (
-          <Col>
-            <ProductCardComponent key={product._id} product={product} />
+          <Col key={product._id}>
+            <ProductCardComponent
+              product={product}
+              isAdmin={isAdmin}
+              onEdit={(id) => onEdit(id, index)}
+              onDelete={(id) => onDelete(id, index)}
+            />
           </Col>
         );
       })}
@@ -23,6 +28,9 @@ const ProductsListComponent = (props) => {
 
 ProductsListComponent.propTypes = {
   products: PropTypes.array,
+  isAdmin: PropTypes.bool,
+  onEdit: PropTypes.func,
+  onDelete: PropTypes.func,
 };
 
 export default ProductsListComponent;

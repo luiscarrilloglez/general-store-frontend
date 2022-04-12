@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 
 import AdminLayout from "layouts/AdminLayout";
 import CustomerLayout from "layouts/CustomerLayout";
@@ -7,6 +7,7 @@ import NotFoundPage from "pages/NotFoundPage";
 import { useIsAdmin } from "hooks/useQuery";
 
 import routes from "routes.js";
+import "react-toastify/dist/ReactToastify.css";
 
 toast.configure();
 
@@ -19,7 +20,7 @@ const App = () => {
   return (
     <Routes>
       {routes.map((route) => {
-        const Element = layout(route.element);
+        const Element = layout(route.element, ToastContainer);
 
         return (
           <Route key={route.path} path={route.path} element={<Element />} />

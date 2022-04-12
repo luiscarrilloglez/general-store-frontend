@@ -34,7 +34,7 @@ export const saveProduct = async (product) => {
 
 export const updateProduct = async (id, product) => {
   try {
-    const response = await axios.post(SERVER_URL + id, product);
+    const response = await axios.put(SERVER_URL + id, product);
     if (response.status === 200) return response.data;
     else return false;
   } catch (error) {
@@ -44,7 +44,7 @@ export const updateProduct = async (id, product) => {
 
 export const deleteProduct = async (id) => {
   try {
-    const response = await axios.post(SERVER_URL + id);
+    const response = await axios.delete(SERVER_URL + id);
     return response.status === 204;
   } catch (error) {
     console.log(error);

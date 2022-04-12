@@ -63,6 +63,10 @@
 }
 
 /* Footer */
+
+footer {
+  background-color: var(--footer-color);
+}
 footer img {
   width: 70px;
   margin-right: 0.625rem;
@@ -70,31 +74,6 @@ footer img {
 
 footer span {
   font-size: 0.75rem;
-}
-
-.TotalResults {
-  color: var(--blue-dark-color);
-  font-size: 1.5rem;
-}
-
-/* Edit Button for editable sections */
-.Editable .EditButton {
-  opacity: 0;
-  transition: all 200ms;
-}
-
-.Editable:hover .EditButton {
-  opacity: 1;
-}
-
-.EditButton {
-  border-width: 0;
-  background-color: var(--snow-color);
-  width: 40px;
-  height: 40px;
-  border-radius: 50px;
-  text-align: center;
-  font-size: 16px;
 }
 
 /*******************************************************

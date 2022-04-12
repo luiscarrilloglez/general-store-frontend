@@ -1,31 +1,47 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 
-import { saveProduct } from "api/productsApi";
+import { saveProduct, updateProduct } from "api/productsApi";
 
 const ProductModalComponent = (props) => {
-  const { show, category, onClose, onSaved } = props;
+  const { show, product, category, onClose, onSaved, onUpdated } = props;
 
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
 
   const [isSaving, setIsSaving] = useState(false);
+
+  useEffect(() => {
+    reset({
+      name: product?.name ?? "",
+      price: product?.price ?? "",
+      imageUrl: product?.imageUrl ?? "",
+      description: product?.description ?? "",
+    });
+  }, [product]);
 
   const onSubmit = async (formValues) => {
     try {
       setIsSaving(true);
 
-      formValues.category = category.key;
+      formValues.category = category?.key;
 
-      const savedProduct = await saveProduct(formValues);
-      console.log("Success! The product has been added.");
-      onSaved?.(savedProduct);
+      if (product) {
+        const updatedProduct = await updateProduct(product._id, formValues);
+        toast.success("Success! The product has been updated.");
+        onUpdated?.(updatedProduct);
+      } else {
+        const savedProduct = await saveProduct(formValues);
+        toast.success("Success! The product has been added.");
+        onSaved?.(savedProduct);
+      }
     } catch (error) {
-      console.error(
+      toast.error(
         "Error! An error occurred while adding the product information, please try again."
       );
     } finally {
@@ -33,11 +49,23 @@ const ProductModalComponent = (props) => {
     }
   };
 
+  const handleOnClose = () => {
+    onClose?.();
+    reset({
+      name: "",
+      price: "",
+      imageUrl: "",
+      description: "",
+    });
+  };
+
   return (
-    <Modal show={show} onHide={onClose}>
+    <Modal show={show} onHide={handleOnClose}>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Modal.Header closeButton>
-          <Modal.Title>New product in {category.label}</Modal.Title>
+          <Modal.Title>{`${product?.name ? "Edit" : "New"} product in ${
+            category?.label
+          }`}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form.Group controlId="name" className="required">
@@ -70,7 +98,7 @@ const ProductModalComponent = (props) => {
           </Form.Group>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={onClose}>
+          <Button variant="secondary" onClick={handleOnClose}>
             Close
           </Button>
           <Button type="submit" variant="primary" disabled={isSaving}>
@@ -84,8 +112,11 @@ const ProductModalComponent = (props) => {
 
 ProductModalComponent.propTypes = {
   show: PropTypes.bool.isRequired,
+  product: PropTypes.object,
+  category: PropTypes.object.isRequired,
   onClose: PropTypes.func.isRequired,
   onSaved: PropTypes.func,
+  onUpdated: PropTypes.func,
 };
 
 export default ProductModalComponent;

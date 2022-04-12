@@ -57,7 +57,7 @@ const CustomerLayout = (WrappedComponent) => {
           </Container>
         </Navbar>
 
-        <Container className="MainContainer" fluid={true}>
+        <Container className="MainContainer">
           <Row>
             <Col>
               <WrappedComponent />
@@ -73,8 +73,13 @@ const CustomerLayout = (WrappedComponent) => {
               <Col>
                 <Image src="/assets/rancho17.webp" alt="Rancho el 17" />
                 <span className="text-muted">
-                  &copy; All rights reserved. Copyright{" "}
-                  {new Date().getFullYear()}. Powered by @luiscarrilloglez
+                  &copy; Rancho El 17, {new Date().getFullYear()}. Powered by
+                  <a
+                    href="https://github.com/luiscarrilloglez"
+                    className="pl-3"
+                  >
+                    @luiscarrilloglez
+                  </a>
                 </span>
               </Col>
             </Row>
