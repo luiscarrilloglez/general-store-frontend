@@ -20,7 +20,11 @@ const HomePage = () => {
         <h1>{category?.label?.toUpperCase()}</h1>
       </div>
       <div className={`${styles.Collection} ${styles.Principal}`}>
-        <CollectionComponent products={products} isAdmin={isAdmin} />
+        <CollectionComponent
+          products={products}
+          isAdmin={isAdmin}
+          category={category}
+        />
       </div>
     </>
   );

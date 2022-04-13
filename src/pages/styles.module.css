@@ -8,7 +8,7 @@
 }
 
 .HeaderSection h1 {
-  font-size: 48px !important;
+  font-size: 40px !important;
 }
 
 .Collection {
@@ -17,5 +17,6 @@
 }
 
 .Principal {
-  background-color: gray;
+  height: 60vh !important;
+  background-image: url(https://cdn.shopify.com/s/files/1/1547/6619/files/fondo-mejora-tus-habilidades.jpg?v=1634136141);
 }
