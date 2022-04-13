@@ -23,7 +23,7 @@ const ProductModalComponent = (props) => {
       imageUrl: product?.imageUrl ?? "",
       description: product?.description ?? "",
     });
-  }, [product]);
+  }, [product, reset]);
 
   const onSubmit = async (formValues) => {
     try {
