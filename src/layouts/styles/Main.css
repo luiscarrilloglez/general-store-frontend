@@ -1,11 +1,11 @@
 /* NavBar */
 .MainNavbar.navbar {
-  min-height: 78px;
+  min-height: 10vh;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
 }
 
 .MainNavbar.navbar-light .navbar-nav .nav-link {
-  color: var(--gray-dark-color);
+  color: var(--black-color);
 }
 
 .MainNavbar .navbar-brand {
@@ -13,11 +13,11 @@
 }
 
 .MainNavbar .navbar-brand img {
-  width: 130px;
+  width: 90px;
 }
 
 .MainNavbar .navbar-text {
-  color: var(--gray-dark-color) !important;
+  color: var(--text-color) !important;
   font-weight: bold;
 }
 
@@ -32,41 +32,27 @@
 }
 
 .MainNavbar .nav-link.active {
-  border-bottom: 6px solid var(--blue-light-color);
-  margin-bottom: -1.188rem;
+  border-bottom: 2px solid var(--red-color);
+  color: var(--red-color) !important;
+  font-weight: 900 !important;
 }
 
 .MainNavbar .nav-user-ml {
   border-left: solid 2px var(--snow-color);
 }
 
-/* User profile menu */
-.MainNavbar .UserProfile {
-  margin-left: 1rem;
-}
-
-.MainNavbar .UserProfile .dropdown-menu {
-  right: -16px;
-  left: auto;
-  text-align: center;
-  top: 65px;
-  width: 195px;
-  padding: 12px;
-}
-
-.MainNavbar .UserProfile .nav-link img {
-  margin-right: 0;
-}
-
-.MainNavbar .UserProfile .nav-link {
-  margin-right: 0;
-}
-
 /* Footer */
 
 footer {
   background-color: var(--footer-color);
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 10vh;
+  margin-top: 10px;
 }
+
 footer img {
   width: 70px;
   margin-right: 0.625rem;
@@ -86,18 +72,10 @@ footer span {
 
 /* Small devices (landscape phones, less than 768px) */
 @media (max-width: 767.98px) {
-  .MainNavbar .nav-link.active {
-    border-bottom: 3px solid var(--blue-light-color);
-    margin-bottom: 0;
-  }
 }
 
 /* Medium devices (tablets, less than 992px) */
 @media (max-width: 991.98px) {
-  .MainNavbar .nav-link.active {
-    border-bottom: 6px solid var(--blue-light-color);
-    margin-bottom: -1.2rem;
-  }
 }
 
 /* Large devices (desktops, less than 1200px) */

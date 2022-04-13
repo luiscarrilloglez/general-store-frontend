@@ -11,8 +11,34 @@ import { Link, NavLink } from "react-router-dom";
 import { categories } from "constants.js";
 import "layouts/styles/Main.css";
 
-const CustomerLayout = (WrappedComponent, ToastContainer) => {
+const CustomerLayout = (WrappedComponent) => {
   return () => {
+    const pathIsActive = (match, location, categoryKey) => {
+      if (!match) {
+        return false;
+      }
+
+      if (categoryKey && location.search !== `?category=${categoryKey}`) {
+        return false;
+      }
+
+      return true;
+    };
+
+    const collectionLink = (category) => {
+      return (
+        <NavLink
+          className="nav-link"
+          to={`/collections?category=${category.key}`}
+          isActive={(match, location) =>
+            pathIsActive(match, location, category.key)
+          }
+        >
+          {category.label}
+        </NavLink>
+      );
+    };
+
     return (
       <>
         <Navbar bg="white" expand="lg" className="sticky-top MainNavbar">
@@ -28,35 +54,12 @@ const CustomerLayout = (WrappedComponent, ToastContainer) => {
               className="justify-content-center"
             >
               <Nav>
-                <NavLink
-                  className="nav-link"
-                  to={`/collections?category=${categories.STEAKS.key}`}
-                >
-                  Steaks
-                </NavLink>
-                <NavLink
-                  className="nav-link"
-                  to={`/collections?category=${categories.BLACK_BRANGUS.key}`}
-                >
-                  Black Brangus
-                </NavLink>
-                <NavLink
-                  className="nav-link"
-                  to={`/collections?category=${categories.DRIED_MEAT.key}`}
-                >
-                  Dried Meat
-                </NavLink>
-                <NavLink
-                  className="nav-link"
-                  to={`/collections?category=${categories.ACCESSORIES.key}`}
-                >
-                  Accessories
-                </NavLink>
+                {collectionLink(categories.STEAKS)}
+                {collectionLink(categories.BLACK_BRANGUS)}
+                {collectionLink(categories.DRIED_MEAT)}
+                {collectionLink(categories.ACCESSORIES)}
               </Nav>
             </Navbar.Collapse>
-            <Link className="navbar-brand text-primary" to="/admin">
-              Admin
-            </Link>
           </Container>
         </Navbar>
 
@@ -64,7 +67,6 @@ const CustomerLayout = (WrappedComponent, ToastContainer) => {
           <Row>
             <Col>
               <WrappedComponent />
-              <ToastContainer />
             </Col>
           </Row>
         </Container>
@@ -72,22 +74,13 @@ const CustomerLayout = (WrappedComponent, ToastContainer) => {
         <hr />
 
         <footer className="text-center py-3">
-          <Container>
-            <Row>
-              <Col>
-                <Image src="/assets/rancho17.webp" alt="Rancho el 17" />
-                <span className="text-muted">
-                  &copy; Rancho El 17, {new Date().getFullYear()}. Powered by
-                  <a
-                    href="https://github.com/luiscarrilloglez"
-                    className="pl-3"
-                  >
-                    @luiscarrilloglez
-                  </a>
-                </span>
-              </Col>
-            </Row>
-          </Container>
+          <Image src="/assets/rancho17.webp" alt="Rancho el 17" />
+          <span className="text-muted">
+            &copy; Rancho El 17, {new Date().getFullYear()}
+          </span>
+          <Link className="text-primary m-4" to="/admin">
+            Admin
+          </Link>
         </footer>
       </>
     );

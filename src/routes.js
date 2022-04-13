@@ -6,21 +6,21 @@ const routes = [
   // Routes for customer
   {
     path: "/",
-    element: HomePage,
+    component: HomePage,
   },
   {
     path: "/collections",
-    element: CollectionPage,
+    component: CollectionPage,
   },
 
   // Routes for admin
   {
     path: "/admin/",
-    element: HomePage,
+    component: HomePage,
   },
   {
     path: "/admin/collections",
-    element: CollectionPage,
+    component: CollectionPage,
   },
 ];
 

@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 
 import AdminLayout from "layouts/AdminLayout";
@@ -11,24 +11,28 @@ import "react-toastify/dist/ReactToastify.css";
 
 toast.configure();
 
-const App = () => {
+function App() {
   const isAdmin = useIsAdmin();
 
   // Set layout by role
   let layout = isAdmin ? AdminLayout : CustomerLayout;
 
   return (
-    <Routes>
+    <Switch>
       {routes.map((route) => {
-        const Element = layout(route.element, ToastContainer);
-
         return (
-          <Route key={route.path} path={route.path} element={<Element />} />
+          <Route
+            key={route.path}
+            path={route.path}
+            exact
+            component={layout(route.component)}
+          />
         );
       })}
-      <Route path="*" element={<NotFoundPage />} />
-    </Routes>
+      <Route path="*" component={layout(NotFoundPage)} />
+      <ToastContainer />
+    </Switch>
   );
-};
+}
 
 export default App;
