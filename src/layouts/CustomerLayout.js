@@ -54,6 +54,9 @@ const CustomerLayout = (WrappedComponent, ToastContainer) => {
                 </NavLink>
               </Nav>
             </Navbar.Collapse>
+            <Link className="navbar-brand text-primary" to="/admin">
+              Admin
+            </Link>
           </Container>
         </Navbar>
 
