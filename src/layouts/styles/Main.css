@@ -45,12 +45,7 @@
 
 footer {
   background-color: var(--footer-color);
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 10vh;
-  margin-top: 10px;
+  position: sticky;
 }
 
 footer img {
