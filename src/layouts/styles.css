@@ -129,7 +129,7 @@ button:focus,
 
 footer {
   background-color: var(--footer-color);
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
 }
