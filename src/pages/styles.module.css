@@ -1,0 +1,21 @@
+.HeaderSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--red-color);
+  height: 240px;
+  margin-bottom: 1.5rem;
+}
+
+.HeaderSection h1 {
+  font-size: 48px !important;
+}
+
+.Collection {
+  margin-left: 10vw;
+  margin-right: 10vw;
+}
+
+.Principal {
+  background-color: gray;
+}

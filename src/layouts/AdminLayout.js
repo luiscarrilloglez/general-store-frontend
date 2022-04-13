@@ -3,22 +3,16 @@ import React from "react";
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
 import { Link, NavLink } from "react-router-dom";
 
 import { categories } from "constants.js";
-import "layouts/styles/Main.css";
+import "layouts/styles.css";
 
 const CustomerLayout = (WrappedComponent) => {
   return () => {
     const pathIsActive = (match, location, categoryKey) => {
-      if (!match) {
-        return false;
-      }
-
-      if (categoryKey && location.search !== `?category=${categoryKey}`) {
+      if (!match || location.search !== `?category=${categoryKey}`) {
         return false;
       }
 
@@ -63,15 +57,9 @@ const CustomerLayout = (WrappedComponent) => {
           </Container>
         </Navbar>
 
-        <Container className="MainContainer">
-          <Row>
-            <Col>
-              <WrappedComponent />
-            </Col>
-          </Row>
+        <Container fluid className="m-0 p-0">
+          <WrappedComponent />
         </Container>
-
-        <hr />
 
         <footer className="text-center py-3">
           <Image src="/assets/rancho17.webp" alt="Rancho el 17" />

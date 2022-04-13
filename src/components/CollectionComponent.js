@@ -1,29 +1,18 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 import Button from "react-bootstrap/Button";
 import { toast } from "react-toastify";
 
 import ProductListComponent from "components/ProductListComponent";
 import ProductModalComponent from "components/ProductModalComponent";
-import LoadingComponent from "components/LoadingComponent";
-import { useCategory, useIsAdmin } from "hooks/useQuery";
-import { useProducts } from "hooks/useProducts";
 import { deleteProduct } from "api/productsApi";
 
-const CollectionComponent = () => {
+const CollectionComponent = (props) => {
+  const { products, isAdmin, category } = props;
+
   const [showProductModal, setShowProductModal] = useState(false);
-  const [listProducts, setListProducts] = useState([]);
+  const [listProducts, setListProducts] = useState(products);
   const [currentProduct, setCurrentProduct] = useState(null);
-
-  const isAdmin = useIsAdmin();
-  const category = useCategory();
-  const { products, loadingProducts } = useProducts(category.key);
-
-  useEffect(() => {
-    if (products.length) {
-      setListProducts(products);
-    }
-  }, [products]);
 
   const handleOnSavedProduct = (product) => {
     setListProducts([product, ...listProducts]);
@@ -86,23 +75,17 @@ const CollectionComponent = () => {
         onSaved={handleOnSavedProduct}
         onUpdated={handleOnUpdatedProduct}
       />
-      <div className="d-flex justify-content-between mb-3">
-        <h1>{category?.label}</h1>
-        {isAdmin && (
-          <Button onClick={() => setShowProductModal(true)}>New product</Button>
-        )}
-      </div>
 
-      {loadingProducts ? (
-        <LoadingComponent />
-      ) : (
-        <ProductListComponent
-          products={listProducts}
-          isAdmin={isAdmin}
-          onEdit={handleOnEditProduct}
-          onDelete={handleOnDeleteProduct}
-        />
+      {isAdmin && (
+        <Button onClick={() => setShowProductModal(true)}>New product</Button>
       )}
+
+      <ProductListComponent
+        products={listProducts}
+        isAdmin={isAdmin}
+        onEdit={handleOnEditProduct}
+        onDelete={handleOnDeleteProduct}
+      />
     </>
   );
 };

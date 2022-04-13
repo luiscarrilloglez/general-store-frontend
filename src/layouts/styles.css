@@ -1,0 +1,144 @@
+/* NavBar */
+
+.MainNavbar.navbar {
+  min-height: 10vh;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+.MainNavbar.navbar-light .navbar-nav .nav-link {
+  color: var(--black-color);
+}
+
+.MainNavbar .navbar-brand {
+  margin-left: 1rem;
+}
+
+.MainNavbar .navbar-brand img {
+  width: 90px;
+}
+
+.MainNavbar .navbar-text {
+  color: var(--text-color) !important;
+}
+
+.MainNavbar .nav-link {
+  margin-right: 2.188rem;
+  font-size: 1rem;
+}
+
+.MainNavbar .nav-link img {
+  margin-right: 0.625rem;
+  width: 20px;
+}
+
+.MainNavbar .nav-link.active {
+  border-bottom: 2px solid var(--red-color);
+  color: var(--red-color) !important;
+  font-weight: bold !important;
+}
+
+.MainNavbar .nav-user-ml {
+  border-left: solid 2px var(--snow-color);
+}
+
+/* General */
+
+h1 {
+  color: var(--white-color);
+  font-size: 1.75rem;
+  font-weight: bold;
+  text-shadow: 2px 2px black;
+}
+
+h2 {
+  color: var(--black-color);
+  font-size: 1.125rem;
+  font-weight: bold;
+}
+
+pre {
+  font-family: "Open Sans";
+  font-size: 0.813rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.54;
+  letter-spacing: normal;
+  color: var(--text-color);
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+/* Form Controls */
+
+.form-group.required .form-label:after {
+  font-size: 1rem;
+  color: var(--red-color);
+  content: "*";
+  position: absolute;
+  margin-left: 0.094rem;
+}
+
+.form-label {
+  font-size: 0.75rem;
+  line-height: 0.75rem;
+  color: var(--text-color);
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+input:focus,
+textarea:focus,
+select:focus,
+button:focus,
+.custom-control-input:focus ~ .custom-control-label::before {
+  box-shadow: none !important;
+}
+
+.custom-checkbox {
+  z-index: 0 !important;
+}
+
+.custom-checkbox .custom-control-label::before {
+  border-radius: 0 !important;
+}
+
+/* Form Validations */
+
+.form-control.is-invalid,
+.was-validated .form-control:invalid {
+  border-color: var(--warning-color);
+  padding-right: 0.875rem;
+  background-image: none;
+}
+
+.form-control.is-invalid:focus,
+.was-validated .form-control:invalid:focus {
+  border-color: var(--red-color);
+  box-shadow: none;
+}
+
+.invalid-feedback {
+  color: var(--red-color);
+  font-size: 0.75rem;
+}
+
+/* Footer */
+
+footer {
+  background-color: var(--footer-color);
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+footer img {
+  width: 70px;
+  margin-right: 0.625rem;
+}
+
+footer span {
+  font-size: 0.75rem;
+}
