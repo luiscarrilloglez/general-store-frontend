@@ -7,6 +7,8 @@ import { toast } from "react-toastify";
 
 import CheckoutContext from "contexts/CheckoutContext";
 
+import { setCheckoutLocalStorage, currencyFormat } from "utils.js";
+
 const ProductCardComponent = (props) => {
   const { product, isAdmin, onEdit, onDelete } = props;
 
@@ -17,20 +19,16 @@ const ProductCardComponent = (props) => {
 
     checkout.push(product);
     setCheckoutContext(checkout);
-    localStorage.setItem("r17-checkout", JSON.stringify(checkout));
+    setCheckoutLocalStorage(checkout);
     toast.success("Success! The product has been added to shopping cart.");
   };
 
   return (
     <Card className="text-center" style={{ width: "18rem" }}>
-      <Card.Img
-        variant="top"
-        src={product.imageUrl}
-        style={{ width: "100%", height: "15vw", objectFit: "contain" }}
-      />
+      <Card.Img variant="top" src={product.imageUrl} />
       <Card.Body>
         <Card.Title>{product.name}</Card.Title>
-        <Card.Text>{product.price}</Card.Text>
+        <Card.Text>{currencyFormat(product.price)}</Card.Text>
         {isAdmin ? (
           <>
             <Button variant="primary" onClick={() => onEdit(product._id)}>
@@ -41,8 +39,8 @@ const ProductCardComponent = (props) => {
             </Button>
           </>
         ) : (
-          <Button variant="primary" onClick={() => handleOnClickAdd(product)}>
-            Add to cart
+          <Button variant="warning" onClick={() => handleOnClickAdd(product)}>
+            Add
           </Button>
         )}
       </Card.Body>

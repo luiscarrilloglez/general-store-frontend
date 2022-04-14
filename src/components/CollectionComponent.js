@@ -53,15 +53,15 @@ const CollectionComponent = (props) => {
   };
 
   const handleOnDeleteProduct = async (id, index) => {
-    const isDeleted = await deleteProduct(id);
+    if (index === -1) {
+      return "Error! An error occurred while deleting the product, please try again.";
+    }
 
-    if (isDeleted) {
-      if (index > -1) {
-        const productsCopy = Array.from(listProducts);
+    if (await deleteProduct(id)) {
+      const productsCopy = Array.from(listProducts);
 
-        productsCopy.splice(index, 1);
-        setListProducts(productsCopy);
-      }
+      productsCopy.splice(index, 1);
+      setListProducts(productsCopy);
 
       toast.success("Success! The product has been deleted.");
     } else {

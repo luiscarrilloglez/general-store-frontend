@@ -65,17 +65,17 @@ const CustomerLayout = (WrappedComponent, props) => {
           </Container>
         </Navbar>
 
-        <Container fluid className="p-0" style={{}}>
+        <Container fluid className="p-0">
           <WrappedComponent />
         </Container>
 
         <footer className="text-center py-1 ">
           <Image src="/assets/rancho17.webp" alt="Rancho el 17" />
-          <span className="text-muted">
+          <span className="text-white">
             &copy; Rancho El 17, {new Date().getFullYear()}
           </span>
-          <Link className="text-primary m-4" to={isAdmin ? "/" : "/admin"}>
-            {isAdmin ? "Customer" : "Admin"}
+          <Link className="text-white m-4" to={isAdmin ? "/" : "/admin"}>
+            {isAdmin ? "Customer" : "Go to Admin"}
           </Link>
         </footer>
       </>

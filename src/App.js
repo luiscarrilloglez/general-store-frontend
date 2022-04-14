@@ -8,6 +8,8 @@ import { useIsAdmin } from "hooks/useQuery";
 import { CheckoutProvider } from "contexts/CheckoutContext";
 
 import routes from "routes.js";
+import { getCheckoutLocalStorage } from "utils";
+
 import "react-toastify/dist/ReactToastify.css";
 
 toast.configure();
@@ -15,10 +17,8 @@ toast.configure();
 function App() {
   const isAdmin = useIsAdmin();
 
-  // Get the checkout from local storage
-  const checkoutFromStorage = JSON.parse(localStorage.getItem("r17-checkout"));
   const [checkoutContext, setCheckoutContext] = useState(
-    checkoutFromStorage ?? []
+    getCheckoutLocalStorage() ?? []
   );
 
   const propsToLayout = { checkoutContext, isAdmin };

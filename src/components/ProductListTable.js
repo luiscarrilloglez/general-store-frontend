@@ -1,0 +1,86 @@
+import { useContext } from "react";
+import PropTypes from "prop-types";
+
+import Table from "react-bootstrap/Table";
+import Button from "react-bootstrap/Button";
+import { toast } from "react-toastify";
+
+import CheckoutContext from "contexts/CheckoutContext";
+
+import { setCheckoutLocalStorage, currencyFormat } from "utils.js";
+
+const ProductListTable = (props) => {
+  const { products } = props;
+
+  const [checkoutContext, setCheckoutContext] = useContext(CheckoutContext);
+
+  const handleOnClickDelete = (index) => {
+    if (index === -1) {
+      return "Error! An error occurred while deleting the product, please try again.";
+    }
+
+    const checkout = [...checkoutContext];
+
+    checkout.splice(index, 1);
+    setCheckoutContext(checkout);
+    setCheckoutLocalStorage(checkout);
+    toast.success("Success! The product has been deleted from shopping cart.");
+  };
+
+  return (
+    <Table hover size="xxl" className="text-center">
+      <thead>
+        <tr
+          style={{
+            height: "60px",
+            verticalAlign: "middle",
+          }}
+        >
+          <th>
+            <h5>PRODUCT</h5>
+          </th>
+          <th>
+            <h5>PRICE</h5>
+          </th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {products.map((product) => {
+          return (
+            <tr key={product._id} style={{ verticalAlign: "middle" }}>
+              <td>
+                <img
+                  src={product.imageUrl}
+                  alt={product.name}
+                  style={{
+                    maxWidth: "100px",
+                    maxHeight: "100px",
+                    marginRight: "1rem",
+                  }}
+                />
+                {product.name}
+              </td>
+              <td>{currencyFormat(product.price)}</td>
+              <td>
+                <Button
+                  variant="danger"
+                  title="Delete product from your shopping cart"
+                  onClick={(index) => handleOnClickDelete(index)}
+                >
+                  X
+                </Button>
+              </td>
+            </tr>
+          );
+        })}
+      </tbody>
+    </Table>
+  );
+};
+
+ProductListTable.propTypes = {
+  products: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
+};
+
+export default ProductListTable;

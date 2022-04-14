@@ -87,18 +87,8 @@ a:hover {
 
 input:focus,
 textarea:focus,
-select:focus,
-button:focus,
-.custom-control-input:focus ~ .custom-control-label::before {
+button:focus {
   box-shadow: none !important;
-}
-
-.custom-checkbox {
-  z-index: 0 !important;
-}
-
-.custom-checkbox .custom-control-label::before {
-  border-radius: 0 !important;
 }
 
 /* Form Validations */
@@ -125,13 +115,12 @@ button:focus,
 
 footer {
   background-color: var(--footer-color);
-  position: fixed;
-  bottom: 0;
+  margin-top: 4rem;
   width: 100%;
 }
 
 footer img {
-  width: 60px;
+  width: 48px;
   margin-right: 0.625rem;
 }
 

@@ -1,7 +1,7 @@
 import { useContext } from "react";
 
 import CheckoutContext from "contexts/CheckoutContext";
-import ProductListComponent from "components/ProductListComponent";
+import ProductListTable from "components/ProductListTable";
 
 import styles from "pages/styles.module.css";
 
@@ -14,12 +14,9 @@ const CheckoutPage = () => {
         <h1>SHOPPING CART</h1>
       </div>
 
-      <ProductListComponent
-        products={checkoutContext}
-        isAdmin={false}
-        //onEdit={handleOnEditProduct}
-        //onDelete={handleOnDeleteProduct}
-      />
+      <div className={styles.Margins}>
+        <ProductListTable products={checkoutContext} />
+      </div>
     </>
   );
 };

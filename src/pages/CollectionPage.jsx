@@ -20,7 +20,7 @@ const CollectionPage = () => {
       {loadingProducts ? (
         <LoadingComponent />
       ) : (
-        <div className={styles.Collection}>
+        <div className={styles.Margins}>
           <CollectionComponent
             products={products}
             isAdmin={isAdmin}
