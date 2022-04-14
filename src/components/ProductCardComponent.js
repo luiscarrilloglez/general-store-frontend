@@ -17,6 +17,7 @@ const ProductCardComponent = (props) => {
 
     checkout.push(product);
     setCheckoutContext(checkout);
+    localStorage.setItem("r17-checkout", JSON.stringify(checkout));
     toast.success("Success! The product has been added to shopping cart.");
   };
 

@@ -15,7 +15,10 @@ toast.configure();
 function App() {
   const isAdmin = useIsAdmin();
 
-  const [checkoutContext, setCheckoutContext] = useState([]);
+  const checkoutFromStorage = JSON.parse(localStorage.getItem("r17-checkout"));
+  const [checkoutContext, setCheckoutContext] = useState(
+    checkoutFromStorage ?? []
+  );
 
   const propsToLayout = { checkoutContext, isAdmin };
 
