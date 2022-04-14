@@ -57,7 +57,11 @@ const CustomerLayout = (WrappedComponent) => {
           </Container>
         </Navbar>
 
-        <Container fluid className="m-0 p-0">
+        <Container
+          fluid
+          className="m-0 p-0 bg-warning"
+          style={{ height: "100%" }}
+        >
           <WrappedComponent />
         </Container>
 

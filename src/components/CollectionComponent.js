@@ -77,7 +77,9 @@ const CollectionComponent = (props) => {
       />
 
       {isAdmin && (
-        <Button onClick={() => setShowProductModal(true)}>New product</Button>
+        <div className="mb-3 d-flex justify-content-end">
+          <Button onClick={() => setShowProductModal(true)}>New product</Button>
+        </div>
       )}
 
       <ProductListComponent

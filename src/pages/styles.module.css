@@ -1,3 +1,11 @@
+.TextCenter {
+  font-size: 32px;
+  font-weight: bolder;
+  line-height: 0.8;
+  text-transform: uppercase;
+  text-shadow: 10px 10px 10px black;
+}
+
 .HeaderSection {
   display: flex;
   justify-content: center;
