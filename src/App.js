@@ -15,6 +15,7 @@ toast.configure();
 function App() {
   const isAdmin = useIsAdmin();
 
+  // Get the checkout from local storage
   const checkoutFromStorage = JSON.parse(localStorage.getItem("r17-checkout"));
   const [checkoutContext, setCheckoutContext] = useState(
     checkoutFromStorage ?? []

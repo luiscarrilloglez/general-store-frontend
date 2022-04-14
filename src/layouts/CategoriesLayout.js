@@ -65,15 +65,11 @@ const CustomerLayout = (WrappedComponent, props) => {
           </Container>
         </Navbar>
 
-        <Container
-          fluid
-          className="m-0 p-0 bg-warning"
-          style={{ height: "100%" }}
-        >
+        <Container fluid className="p-0" style={{}}>
           <WrappedComponent />
         </Container>
 
-        <footer className="text-center py-3 ">
+        <footer className="text-center py-1 ">
           <Image src="/assets/rancho17.webp" alt="Rancho el 17" />
           <span className="text-muted">
             &copy; Rancho El 17, {new Date().getFullYear()}

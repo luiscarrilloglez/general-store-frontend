@@ -1,7 +1,7 @@
 /* Navbar */
 
 .navbar {
-  min-height: 10vh;
+  max-height: 76px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
 }
 
@@ -14,7 +14,7 @@
 }
 
 .navbar-brand img {
-  width: 90px;
+  width: 80px;
 }
 
 .navbar-text {
@@ -131,7 +131,7 @@ footer {
 }
 
 footer img {
-  width: 70px;
+  width: 60px;
   margin-right: 0.625rem;
 }
 
