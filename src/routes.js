@@ -1,6 +1,6 @@
 import HomePage from "pages/HomePage";
 import CollectionPage from "pages/CollectionPage";
-//import CheckoutPage from "pages/CheckoutPage";
+import CheckoutPage from "pages/CheckoutPage";
 
 const routes = [
   // Routes for customer
@@ -11,6 +11,10 @@ const routes = [
   {
     path: "/collections",
     component: CollectionPage,
+  },
+  {
+    path: "/checkout",
+    component: CheckoutPage,
   },
 
   // Routes for admin

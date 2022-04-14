@@ -27,6 +27,16 @@ const ProductModalComponent = (props) => {
     }
   }, [product, reset]);
 
+  const handleOnClose = () => {
+    onClose?.();
+    reset({
+      name: "",
+      price: "",
+      imageUrl: "",
+      description: "",
+    });
+  };
+
   const onSubmit = async (formValues) => {
     try {
       setIsSaving(true);
@@ -41,6 +51,7 @@ const ProductModalComponent = (props) => {
         const savedProduct = await saveProduct(formValues);
         toast.success("Success! The product has been added.");
         onSaved?.(savedProduct);
+        handleOnClose();
       }
     } catch (error) {
       toast.error(
@@ -49,16 +60,6 @@ const ProductModalComponent = (props) => {
     } finally {
       setIsSaving(false);
     }
-  };
-
-  const handleOnClose = () => {
-    onClose?.();
-    reset({
-      name: "",
-      price: "",
-      imageUrl: "",
-      description: "",
-    });
   };
 
   return (

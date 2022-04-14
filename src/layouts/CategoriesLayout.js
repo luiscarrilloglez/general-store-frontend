@@ -52,6 +52,12 @@ const CustomerLayout = (WrappedComponent, isAdmin) => {
                 {collectionLink(categories.BLACK_BRANGUS)}
                 {collectionLink(categories.DRIED_MEAT)}
                 {collectionLink(categories.ACCESSORIES)}
+
+                {!isAdmin && (
+                  <NavLink className="nav-link text-rigth" to="/checkout">
+                    <Image src="/assets/shopping_cart.png" alt="Rancho el 17" />
+                  </NavLink>
+                )}
               </Nav>
             </Navbar.Collapse>
           </Container>
