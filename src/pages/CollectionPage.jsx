@@ -8,24 +8,26 @@ import styles from "pages/styles.module.css";
 const CollectionPage = () => {
   const isAdmin = useIsAdmin();
   const category = useCategory();
-  const { products, loadingProducts } = useProducts(category.key);
+  const { products, loadingProducts } = useProducts(category?.key);
 
-  if (loadingProducts) {
-    return <LoadingComponent />;
-  }
+  if (!category) return null;
 
   return (
     <>
       <div className={styles.HeaderSection}>
         <h1>{category?.label?.toUpperCase()}</h1>
       </div>
-      <div className={styles.Collection}>
-        <CollectionComponent
-          products={products}
-          isAdmin={isAdmin}
-          category={category}
-        />
-      </div>
+      {loadingProducts ? (
+        <LoadingComponent />
+      ) : (
+        <div className={styles.Collection}>
+          <CollectionComponent
+            products={products}
+            isAdmin={isAdmin}
+            category={category}
+          />
+        </div>
+      )}
     </>
   );
 };

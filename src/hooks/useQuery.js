@@ -18,10 +18,7 @@ export const useCategory = () => {
 
   const categoryParam = queryParams.get("category");
 
-  const category =
-    categoryParam && categories[categoryParam]
-      ? categories[categoryParam]
-      : categories.BEST_SELLERS;
+  const category = categoryParam && categories[categoryParam];
 
   return category;
 };

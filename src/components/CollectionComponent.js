@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 
 import Button from "react-bootstrap/Button";
 import { toast } from "react-toastify";
@@ -46,6 +47,11 @@ const CollectionComponent = (props) => {
     }
   };
 
+  const handleOnCloseProductModal = () => {
+    setShowProductModal(false);
+    setCurrentProduct(null);
+  };
+
   const handleOnDeleteProduct = async (id, index) => {
     const isDeleted = await deleteProduct(id);
 
@@ -71,7 +77,7 @@ const CollectionComponent = (props) => {
         show={showProductModal}
         product={currentProduct}
         category={category}
-        onClose={() => setShowProductModal(false)}
+        onClose={handleOnCloseProductModal}
         onSaved={handleOnSavedProduct}
         onUpdated={handleOnUpdatedProduct}
       />
@@ -92,6 +98,10 @@ const CollectionComponent = (props) => {
   );
 };
 
-CollectionComponent.propTypes = {};
+CollectionComponent.propTypes = {
+  products: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
+  isAdmin: PropTypes.bool,
+  category: PropTypes.object.isRequired,
+};
 
 export default CollectionComponent;

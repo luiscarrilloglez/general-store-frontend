@@ -1,8 +1,7 @@
 import { Switch, Route } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 
-import AdminLayout from "layouts/AdminLayout";
-import CustomerLayout from "layouts/CustomerLayout";
+import CategoriesLayout from "layouts/CategoriesLayout";
 import NotFoundPage from "pages/NotFoundPage";
 import { useIsAdmin } from "hooks/useQuery";
 
@@ -14,9 +13,6 @@ toast.configure();
 function App() {
   const isAdmin = useIsAdmin();
 
-  // Set layout by role
-  let layout = isAdmin ? AdminLayout : CustomerLayout;
-
   return (
     <Switch>
       {routes.map((route) => {
@@ -25,11 +21,11 @@ function App() {
             key={route.path}
             path={route.path}
             exact
-            component={layout(route.component)}
+            component={CategoriesLayout(route.component, isAdmin)}
           />
         );
       })}
-      <Route path="*" component={layout(NotFoundPage)} />
+      <Route component={CategoriesLayout(NotFoundPage, isAdmin)} />
       <ToastContainer />
     </Switch>
   );

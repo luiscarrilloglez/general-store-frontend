@@ -17,12 +17,14 @@ const ProductModalComponent = (props) => {
   const [isSaving, setIsSaving] = useState(false);
 
   useEffect(() => {
-    reset({
-      name: product?.name ?? "",
-      price: product?.price ?? "",
-      imageUrl: product?.imageUrl ?? "",
-      description: product?.description ?? "",
-    });
+    if (product) {
+      reset({
+        name: product?.name ?? "",
+        price: product?.price ?? "",
+        imageUrl: product?.imageUrl ?? "",
+        description: product?.description ?? "",
+      });
+    }
   }, [product, reset]);
 
   const onSubmit = async (formValues) => {

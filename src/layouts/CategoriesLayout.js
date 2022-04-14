@@ -7,9 +7,9 @@ import Image from "react-bootstrap/Image";
 import { Link, NavLink } from "react-router-dom";
 
 import { categories } from "constants.js";
-import "layouts/styles.css";
+import "layouts/CategoriesLayout.css";
 
-const CustomerLayout = (WrappedComponent) => {
+const CustomerLayout = (WrappedComponent, isAdmin) => {
   return () => {
     const pathIsActive = (match, location, categoryKey) => {
       if (!match || location.search !== `?category=${categoryKey}`) {
@@ -23,7 +23,7 @@ const CustomerLayout = (WrappedComponent) => {
       return (
         <NavLink
           className="nav-link"
-          to={`/collections?category=${category.key}`}
+          to={`/${isAdmin ? "admin/" : ""}collections?category=${category.key}`}
           isActive={(match, location) =>
             pathIsActive(match, location, category.key)
           }
@@ -37,7 +37,7 @@ const CustomerLayout = (WrappedComponent) => {
       <>
         <Navbar bg="white" expand="md" className="sticky-top MainNavbar">
           <Container>
-            <Link className="navbar-brand" to="/">
+            <Link className="navbar-brand" to={isAdmin ? "/admin" : "/"}>
               <Image src="/assets/rancho17.webp" alt="Rancho el 17" />
             </Link>
 
@@ -70,8 +70,8 @@ const CustomerLayout = (WrappedComponent) => {
           <span className="text-muted">
             &copy; Rancho El 17, {new Date().getFullYear()}
           </span>
-          <Link className="text-primary m-4" to="/admin">
-            Admin
+          <Link className="text-primary m-4" to={isAdmin ? "/" : "/admin"}>
+            {isAdmin ? "Customer" : "Admin"}
           </Link>
         </footer>
       </>

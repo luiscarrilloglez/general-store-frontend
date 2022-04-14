@@ -1,44 +1,40 @@
-/* NavBar */
+/* Navbar */
 
-.MainNavbar.navbar {
+.navbar {
   min-height: 10vh;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
 }
 
-.MainNavbar.navbar-light .navbar-nav .nav-link {
+.navbar-light .navbar-nav .nav-link {
   color: var(--black-color);
 }
 
-.MainNavbar .navbar-brand {
+.navbar-brand {
   margin-left: 1rem;
 }
 
-.MainNavbar .navbar-brand img {
+.navbar-brand img {
   width: 90px;
 }
 
-.MainNavbar .navbar-text {
+.navbar-text {
   color: var(--text-color) !important;
 }
 
-.MainNavbar .nav-link {
+.nav-link {
   margin-right: 2.188rem;
   font-size: 1rem;
 }
 
-.MainNavbar .nav-link img {
+.nav-link img {
   margin-right: 0.625rem;
   width: 20px;
 }
 
-.MainNavbar .nav-link.active {
+.nav-link.active {
   border-bottom: 2px solid var(--red-color);
   color: var(--red-color) !important;
   font-weight: bold !important;
-}
-
-.MainNavbar .nav-user-ml {
-  border-left: solid 2px var(--snow-color);
 }
 
 /* General */
