@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
+import Image from "react-bootstrap/Image";
 import { toast } from "react-toastify";
 
 import ShoppingCartContext from "contexts/ShoppingCartContext";
@@ -25,11 +26,17 @@ const ProductCardComponent = (props) => {
   };
 
   return (
-    <Card className="text-center" style={{ width: "18rem" }}>
+    <Card
+      className="text-center withoutborder"
+      style={{ width: "18rem", height: "24rem" }}
+    >
       <Card.Img
         variant="top"
         src={product.imageUrl}
-        style={{ maxHeight: "200px", objectFit: "scale-down" }}
+        style={{
+          height: "200px",
+          objectFit: "scale-down",
+        }}
       />
       <Card.Body>
         <Card.Title>{product.name}</Card.Title>
@@ -44,8 +51,14 @@ const ProductCardComponent = (props) => {
             </Button>
           </>
         ) : (
-          <Button variant="warning" onClick={() => handleOnClickAdd(product)}>
-            Add
+          <Button
+            variant="light"
+            onClick={() => handleOnClickAdd(product)}
+            style={{ position: "relative", bottom: 0, marginBottom: "1rem" }}
+            className="btn btn-circle"
+            title="Add to shopping cart"
+          >
+            <Image src="/assets/shopping_cart.png" alt="Add to shopping cart" />
           </Button>
         )}
       </Card.Body>

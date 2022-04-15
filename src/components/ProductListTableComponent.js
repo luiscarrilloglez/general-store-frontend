@@ -9,7 +9,7 @@ import ShoppingCartContext from "contexts/ShoppingCartContext";
 
 import { setShoppingCartLocalStorage, currencyFormat } from "utils.js";
 
-const ProductListTable = (props) => {
+const ProductListTableComponent = (props) => {
   const { products } = props;
 
   const [shoppingCartContext, setShoppingCartContext] =
@@ -17,7 +17,7 @@ const ProductListTable = (props) => {
 
   const handleOnClickDelete = (index) => {
     if (index === -1) {
-      return "Error! An error occurred while deleting the product, please try again.";
+      return "Error! An error occurred while removing the product, please try again.";
     }
 
     const shoppingCart = [...shoppingCartContext];
@@ -25,11 +25,13 @@ const ProductListTable = (props) => {
     shoppingCart.splice(index, 1);
     setShoppingCartContext(shoppingCart);
     setShoppingCartLocalStorage(shoppingCart);
-    toast.success("Success! The product has been deleted from shopping cart.");
+    toast.success(
+      "Success! The product has been removed from your shopping cart."
+    );
   };
 
   return (
-    <Table hover size="xxl" className="text-center">
+    <Table hover size="lg" className="text-center">
       <thead>
         <tr
           style={{
@@ -80,8 +82,8 @@ const ProductListTable = (props) => {
   );
 };
 
-ProductListTable.propTypes = {
+ProductListTableComponent.propTypes = {
   products: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
 };
 
-export default ProductListTable;
+export default ProductListTableComponent;

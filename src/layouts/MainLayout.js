@@ -36,7 +36,7 @@ const MainLayout = (WrappedComponent, props) => {
 
     return (
       <>
-        <Navbar bg="white" expand="md" className="sticky-top">
+        <Navbar bg="white" expand="lg" sticky="top">
           <Container>
             <Link className="navbar-brand" to={isAdmin ? "/admin" : "/"}>
               <Image src="/assets/rancho17.webp" alt="Rancho el 17" />

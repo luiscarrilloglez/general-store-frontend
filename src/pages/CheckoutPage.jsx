@@ -3,53 +3,23 @@ import { useContext, useState } from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
 import { useHistory } from "react-router-dom";
-import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
 
 import ShoppingCartContext from "contexts/ShoppingCartContext";
-import ProductListTable from "components/ProductListTable";
+import ProductListTableComponent from "components/ProductListTableComponent";
+import CheckoutFormCardComponent from "components/CheckoutFormCardComponent";
 import { saveOrder } from "api/ordersApi";
 
 import { currencyFormat, setShoppingCartLocalStorage } from "utils.js";
 import styles from "pages/styles.module.css";
 
-// Validation schema
-const schemaContactInfo = yup
-  .object({
-    name: yup.string().trim().required(),
-    street: yup.string().trim().required(),
-    neighborhood: yup.string().trim().required(),
-    zipCode: yup
-      .string()
-      .trim()
-      .required()
-      .matches(/^[0-9]+$/, "Must be only digits")
-      .min(5)
-      .max(5),
-    city: yup.string().trim().required(),
-    state: yup.string().trim().required(),
-    email: yup.string().trim().email().required(),
-    phone: yup.string().trim(),
-  })
-  .required();
-
 const CheckoutPage = () => {
+  const [isSaving, setIsSaving] = useState(false);
+
   const [shoppingCartContext, setShoppingCartContext] =
     useContext(ShoppingCartContext);
   const history = useHistory();
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({ resolver: yupResolver(schemaContactInfo) });
-
-  const [isSaving, setIsSaving] = useState(false);
 
   const totalAmount = () => {
     return shoppingCartContext.reduce(
@@ -58,12 +28,14 @@ const CheckoutPage = () => {
     );
   };
 
-  const onSubmit = async (formValues) => {
-    setIsSaving(true);
-    formValues.products = [...shoppingCartContext];
+  const handleCheckout = async (formValues) => {
+    const order = { ...formValues };
+
+    order.products = [...shoppingCartContext];
 
     try {
-      const savedOrder = await saveOrder(formValues);
+      setIsSaving(true);
+      const savedOrder = await saveOrder(order);
 
       if (!savedOrder) {
         throw new Error("Server error");
@@ -87,7 +59,7 @@ const CheckoutPage = () => {
 
   return (
     <>
-      <div className={styles.HeaderSection}>
+      <div className={styles.Cover}>
         <h1>SHOPPING CART</h1>
       </div>
 
@@ -102,7 +74,7 @@ const CheckoutPage = () => {
           </div>
         ) : (
           <>
-            <ProductListTable products={shoppingCartContext} />
+            <ProductListTableComponent products={shoppingCartContext} />
 
             <Row>
               <Col md={4} className="order-md-last mt-5 text-center">
@@ -117,138 +89,10 @@ const CheckoutPage = () => {
               </Col>
 
               <Col md={8} className="mt-5">
-                <Card>
-                  <Form onSubmit={handleSubmit(onSubmit)}>
-                    <Card.Header className="text-center">
-                      <Card.Title>CONTACT INFORMATION</Card.Title>
-                    </Card.Header>
-                    <Card.Body>
-                      <Form.Control
-                        className="form-control-without-label"
-                        type="text"
-                        name="name"
-                        {...register("name")}
-                        placeholder="Full name"
-                        isInvalid={errors.name}
-                      />
-                      {errors.name && (
-                        <Form.Control.Feedback type="invalid">
-                          {errors.name?.message}
-                        </Form.Control.Feedback>
-                      )}
-
-                      <Form.Control
-                        className="form-control-without-label"
-                        type="text"
-                        name="street"
-                        {...register("street")}
-                        placeholder="Street and number"
-                        isInvalid={errors.street}
-                      />
-                      {errors.street && (
-                        <Form.Control.Feedback type="invalid">
-                          {errors.street?.message}
-                        </Form.Control.Feedback>
-                      )}
-
-                      <Form.Control
-                        className="form-control-without-label"
-                        type="text"
-                        name="neighborhood"
-                        {...register("neighborhood")}
-                        placeholder="Neighborhood"
-                        isInvalid={errors.neighborhood}
-                      />
-                      {errors.neighborhood && (
-                        <Form.Control.Feedback type="invalid">
-                          {errors.neighborhood?.message}
-                        </Form.Control.Feedback>
-                      )}
-
-                      <Form.Control
-                        className="form-control-without-label"
-                        type="text"
-                        name="zipCode"
-                        {...register("zipCode")}
-                        placeholder="Zip code"
-                        isInvalid={errors.zipCode}
-                      />
-                      {errors.zipCode && (
-                        <Form.Control.Feedback type="invalid">
-                          {errors.zipCode?.message}
-                        </Form.Control.Feedback>
-                      )}
-
-                      <Form.Control
-                        className="form-control-without-label"
-                        type="text"
-                        name="city"
-                        {...register("city")}
-                        placeholder="City"
-                        isInvalid={errors.city}
-                      />
-                      {errors.city && (
-                        <Form.Control.Feedback type="invalid">
-                          {errors.city?.message}
-                        </Form.Control.Feedback>
-                      )}
-
-                      <Form.Control
-                        className="form-control-without-label"
-                        type="text"
-                        name="state"
-                        {...register("state")}
-                        placeholder="State"
-                        isInvalid={errors.state}
-                      />
-                      {errors.state && (
-                        <Form.Control.Feedback type="invalid">
-                          {errors.state?.message}
-                        </Form.Control.Feedback>
-                      )}
-
-                      <Form.Control
-                        className="form-control-without-label"
-                        type="text"
-                        name="email"
-                        {...register("email")}
-                        placeholder="Email"
-                        isInvalid={errors.email}
-                      />
-
-                      {errors.email && (
-                        <Form.Control.Feedback type="invalid">
-                          {errors.email?.message}
-                        </Form.Control.Feedback>
-                      )}
-
-                      <Form.Control
-                        className="form-control-without-label"
-                        type="text"
-                        name="phone"
-                        {...register("phone")}
-                        placeholder="Phone number"
-                        isInvalid={errors.phone}
-                      />
-
-                      {errors.phone && (
-                        <Form.Control.Feedback type="invalid">
-                          {errors.phone?.message}
-                        </Form.Control.Feedback>
-                      )}
-                    </Card.Body>
-                    <Card.Footer className="text-center">
-                      <Button
-                        type="submit"
-                        variant="primary"
-                        size="lg"
-                        disabled={isSaving}
-                      >
-                        Checkout
-                      </Button>
-                    </Card.Footer>
-                  </Form>
-                </Card>
+                <CheckoutFormCardComponent
+                  isSaving={isSaving}
+                  onCheckout={handleCheckout}
+                />
               </Col>
             </Row>
           </>

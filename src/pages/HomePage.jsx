@@ -15,17 +15,16 @@ const HomePage = () => {
 
   const pictureCollection = (category) => {
     return (
-      <div className={styles.HomeImage}>
-        <img
-          src={category.coverImageUrl}
-          alt={category.label}
-          onClick={() =>
-            history.push({
-              pathname: `/${isAdmin ? "admin/" : ""}collections`,
-              search: `?category=${category.key}`,
-            })
-          }
-        />
+      <div
+        className={styles.HomeImage}
+        onClick={() =>
+          history.push({
+            pathname: `/${isAdmin ? "admin/" : ""}collections`,
+            search: `?category=${category.key}`,
+          })
+        }
+      >
+        <img src={category.homeImageUrl} alt={category.label} />
         <div className={styles.HomeImageText}>
           <h1>{category.label}</h1>
         </div>
@@ -35,10 +34,10 @@ const HomePage = () => {
 
   return (
     <>
-      <Row xs={2} md={4} className="pb-3">
+      <Row xs={2} md={4} className="pb-3 m-0">
         {categoryKeys.map((category) => {
           return (
-            <Col className="p-0 m-0">
+            <Col className="p-0" key={category.key}>
               {pictureCollection(categories[category])}
             </Col>
           );

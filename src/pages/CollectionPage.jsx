@@ -12,11 +12,24 @@ const CollectionPage = () => {
 
   if (!category) return null;
 
+  const renderCover = () => {
+    return (
+      <div
+        className={styles.Cover}
+        style={{
+          backgroundImage: `url(${category?.coverImageUrl})`,
+          backgroundSize: "cover",
+        }}
+      >
+        <h1>{category?.label}</h1>
+      </div>
+    );
+  };
+
   return (
     <>
-      <div className={styles.HeaderSection}>
-        <h1>{category?.label?.toUpperCase()}</h1>
-      </div>
+      {renderCover()}
+
       {loadingProducts ? (
         <LoadingComponent />
       ) : (

@@ -19,6 +19,23 @@
   top: 50%;
   width: 100%;
 }
+.HomeImageText h1 {
+  text-transform: uppercase;
+  font-size: 32px !important;
+}
+
+.Cover {
+  text-align: center;
+  background-position: "center";
+  background-size: "cover";
+  background-color: var(--footer-color);
+}
+
+.Cover h1 {
+  padding: 140px 0 140px;
+  font-size: 60px !important;
+  text-transform: uppercase;
+}
 
 .TextCenter {
   font-size: 32px;
@@ -32,12 +49,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--red-color);
+  background-color: var(--black-color);
   height: 240px;
   margin-bottom: 1.5rem;
 }
 
 .Margins {
+  margin-top: 1.5rem;
   margin-left: 10vw;
   margin-right: 10vw;
 }
