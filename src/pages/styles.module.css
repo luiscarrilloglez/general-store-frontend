@@ -1,3 +1,25 @@
+.HomeImage {
+  position: relative;
+  cursor: pointer;
+}
+
+.HomeImage img {
+  width: 100%;
+}
+
+.HomeImage:hover {
+  transform: scale(1.1);
+  transition: 0.2s;
+}
+
+.HomeImageText {
+  left: 0;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  width: 100%;
+}
+
 .TextCenter {
   font-size: 32px;
   font-weight: bolder;

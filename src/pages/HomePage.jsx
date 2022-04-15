@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import { useIsAdmin } from "hooks/useQuery";
 import { categories } from "constants.js";
 
-//import styles from "pages/styles.module.css";
+import styles from "pages/styles.module.css";
 
 const HomePage = () => {
   const history = useHistory();
@@ -15,10 +15,9 @@ const HomePage = () => {
 
   const pictureCollection = (category) => {
     return (
-      <div className="d-flex">
+      <div className={styles.HomeImage}>
         <img
           src={category.coverImageUrl}
-          className="w-100"
           alt={category.label}
           onClick={() =>
             history.push({
@@ -27,6 +26,9 @@ const HomePage = () => {
             })
           }
         />
+        <div className={styles.HomeImageText}>
+          <h1>{category.label}</h1>
+        </div>
       </div>
     );
   };

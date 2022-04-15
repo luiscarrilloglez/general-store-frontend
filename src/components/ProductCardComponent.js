@@ -21,7 +21,7 @@ const ProductCardComponent = (props) => {
     shoppingCart.push(product);
     setShoppingCartContext(shoppingCart);
     setShoppingCartLocalStorage(shoppingCart);
-    toast.success("Success! The product has been added to shopping cart.");
+    toast.success("Success! The product has been added to your shopping cart.");
   };
 
   return (

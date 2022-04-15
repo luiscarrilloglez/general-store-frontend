@@ -237,13 +237,14 @@ const CheckoutPage = () => {
                         </Form.Control.Feedback>
                       )}
                     </Card.Body>
-                    <Card.Footer>
+                    <Card.Footer className="text-center">
                       <Button
                         type="submit"
                         variant="primary"
+                        size="lg"
                         disabled={isSaving}
                       >
-                        Save product
+                        Checkout
                       </Button>
                     </Card.Footer>
                   </Form>

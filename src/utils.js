@@ -8,9 +8,9 @@ export const currencyFormat = (price) => {
 };
 
 export const getShoppingCartLocalStorage = () => {
-  return JSON.parse(localStorage.getItem("r17-checkout"));
+  return JSON.parse(localStorage.getItem("r17-products"));
 };
 
 export const setShoppingCartLocalStorage = (checkout) => {
-  localStorage.setItem("r17-checkout", JSON.stringify(checkout));
+  localStorage.setItem("r17-products", JSON.stringify(checkout));
 };
