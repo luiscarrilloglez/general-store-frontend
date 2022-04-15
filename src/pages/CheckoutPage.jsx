@@ -5,6 +5,7 @@ import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -12,8 +13,9 @@ import * as yup from "yup";
 
 import ShoppingCartContext from "contexts/ShoppingCartContext";
 import ProductListTable from "components/ProductListTable";
+import { saveOrder } from "api/ordersApi";
 
-import { currencyFormat } from "utils.js";
+import { currencyFormat, setShoppingCartLocalStorage } from "utils.js";
 import styles from "pages/styles.module.css";
 
 // Validation schema
@@ -37,7 +39,9 @@ const schemaContactInfo = yup
   .required();
 
 const CheckoutPage = () => {
-  const [shoppingCartContext] = useContext(ShoppingCartContext);
+  const [shoppingCartContext, setShoppingCartContext] =
+    useContext(ShoppingCartContext);
+  const history = useHistory();
 
   const {
     register,
@@ -55,22 +59,23 @@ const CheckoutPage = () => {
   };
 
   const onSubmit = async (formValues) => {
-    try {
-      setIsSaving(true);
-      console.log(formValues);
-      /*
+    setIsSaving(true);
+    formValues.products = [...shoppingCartContext];
 
-      if (product) {
-        const updatedProduct = await updateProduct(product._id, formValues);
-        toast.success("Success! The product has been updated.");
-        onUpdated?.(updatedProduct);
-      } else {
-        const savedProduct = await saveProduct(formValues);
-        toast.success("Success! The product has been added.");
-        onSaved?.(savedProduct);
-        handleOnClose();
+    try {
+      const savedOrder = await saveOrder(formValues);
+
+      if (!savedOrder) {
+        throw new Error("Server error");
       }
-      */
+      toast.success("Success! Your shopping cart has been sent successfully.");
+
+      setShoppingCartContext([]);
+      setShoppingCartLocalStorage([]);
+
+      setIsSaving(false);
+
+      history.push("/");
     } catch (error) {
       toast.error(
         "Error! An error occurred while adding the product information, please try again."
