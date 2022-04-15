@@ -7,10 +7,10 @@ export const currencyFormat = (price) => {
   return dollarUS.format(price);
 };
 
-export const getCheckoutLocalStorage = () => {
+export const getShoppingCartLocalStorage = () => {
   return JSON.parse(localStorage.getItem("r17-checkout"));
 };
 
-export const setCheckoutLocalStorage = (checkout) => {
+export const setShoppingCartLocalStorage = (checkout) => {
   localStorage.setItem("r17-checkout", JSON.stringify(checkout));
 };

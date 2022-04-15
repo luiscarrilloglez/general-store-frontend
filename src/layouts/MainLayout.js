@@ -6,10 +6,10 @@ import Badge from "react-bootstrap/Badge";
 import { Link, NavLink } from "react-router-dom";
 
 import { categories } from "constants.js";
-import "layouts/CategoriesLayout.css";
+import "layouts/MainLayout.css";
 
-const CustomerLayout = (WrappedComponent, props) => {
-  const { checkoutContext, isAdmin } = props;
+const MainLayout = (WrappedComponent, props) => {
+  const { shoppingCartContext, isAdmin } = props;
 
   return () => {
     const pathIsActive = (match, location, categoryKey) => {
@@ -36,7 +36,7 @@ const CustomerLayout = (WrappedComponent, props) => {
 
     return (
       <>
-        <Navbar bg="white" expand="md" className="sticky-top MainNavbar">
+        <Navbar bg="white" expand="md" className="sticky-top">
           <Container>
             <Link className="navbar-brand" to={isAdmin ? "/admin" : "/"}>
               <Image src="/assets/rancho17.webp" alt="Rancho el 17" />
@@ -55,9 +55,11 @@ const CustomerLayout = (WrappedComponent, props) => {
                 {collectionLink(categories.ACCESSORIES)}
 
                 {!isAdmin && (
-                  <NavLink className="nav-link text-rigth" to="/checkout">
+                  <NavLink className="nav-link" to="/checkout">
                     <Image src="/assets/shopping_cart.png" alt="Rancho el 17" />
-                    <Badge bg="danger">{checkoutContext?.length ?? 0}</Badge>
+                    <Badge bg="danger">
+                      {shoppingCartContext?.length ?? 0}
+                    </Badge>
                   </NavLink>
                 )}
               </Nav>
@@ -83,4 +85,4 @@ const CustomerLayout = (WrappedComponent, props) => {
   };
 };
 
-export default CustomerLayout;
+export default MainLayout;

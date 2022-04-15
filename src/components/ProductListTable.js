@@ -5,25 +5,26 @@ import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import { toast } from "react-toastify";
 
-import CheckoutContext from "contexts/CheckoutContext";
+import ShoppingCartContext from "contexts/ShoppingCartContext";
 
-import { setCheckoutLocalStorage, currencyFormat } from "utils.js";
+import { setShoppingCartLocalStorage, currencyFormat } from "utils.js";
 
 const ProductListTable = (props) => {
   const { products } = props;
 
-  const [checkoutContext, setCheckoutContext] = useContext(CheckoutContext);
+  const [shoppingCartContext, setShoppingCartContext] =
+    useContext(ShoppingCartContext);
 
   const handleOnClickDelete = (index) => {
     if (index === -1) {
       return "Error! An error occurred while deleting the product, please try again.";
     }
 
-    const checkout = [...checkoutContext];
+    const shoppingCart = [...shoppingCartContext];
 
-    checkout.splice(index, 1);
-    setCheckoutContext(checkout);
-    setCheckoutLocalStorage(checkout);
+    shoppingCart.splice(index, 1);
+    setShoppingCartContext(shoppingCart);
+    setShoppingCartLocalStorage(shoppingCart);
     toast.success("Success! The product has been deleted from shopping cart.");
   };
 

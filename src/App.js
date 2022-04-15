@@ -2,13 +2,13 @@ import { useState } from "react";
 import { Switch, Route } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 
-import CategoriesLayout from "layouts/CategoriesLayout";
+import MainLayout from "layouts/MainLayout";
 import NotFoundPage from "pages/NotFoundPage";
 import { useIsAdmin } from "hooks/useQuery";
-import { CheckoutProvider } from "contexts/CheckoutContext";
+import { ShoppingCartProvider } from "contexts/ShoppingCartContext";
 
 import routes from "routes.js";
-import { getCheckoutLocalStorage } from "utils";
+import { getShoppingCartLocalStorage } from "utils";
 
 import "react-toastify/dist/ReactToastify.css";
 
@@ -17,14 +17,14 @@ toast.configure();
 function App() {
   const isAdmin = useIsAdmin();
 
-  const [checkoutContext, setCheckoutContext] = useState(
-    getCheckoutLocalStorage() ?? []
+  const [shoppingCartContext, setShoppingCartContext] = useState(
+    getShoppingCartLocalStorage() ?? []
   );
 
-  const propsToLayout = { checkoutContext, isAdmin };
+  const propsToLayout = { shoppingCartContext, isAdmin };
 
   return (
-    <CheckoutProvider value={[checkoutContext, setCheckoutContext]}>
+    <ShoppingCartProvider value={[shoppingCartContext, setShoppingCartContext]}>
       <Switch>
         {routes.map((route) => {
           return (
@@ -32,14 +32,14 @@ function App() {
               key={route.path}
               path={route.path}
               exact
-              component={CategoriesLayout(route.component, propsToLayout)}
+              component={MainLayout(route.component, propsToLayout)}
             />
           );
         })}
-        <Route component={CategoriesLayout(NotFoundPage, propsToLayout)} />
+        <Route component={MainLayout(NotFoundPage, propsToLayout)} />
         <ToastContainer />
       </Switch>
-    </CheckoutProvider>
+    </ShoppingCartProvider>
   );
 }
 

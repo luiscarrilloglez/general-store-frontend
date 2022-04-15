@@ -15,11 +15,17 @@
   margin-bottom: 1.5rem;
 }
 
-.HeaderSection h1 {
-  font-size: 40px !important;
-}
-
 .Margins {
   margin-left: 10vw;
   margin-right: 10vw;
+}
+
+.Margins h2 {
+  font-size: 32px !important;
+  color: var(--red-color);
+}
+
+.Margins h3 {
+  font-size: 24px !important;
+  color: var(--text-color);
 }

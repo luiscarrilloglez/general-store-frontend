@@ -5,21 +5,22 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { toast } from "react-toastify";
 
-import CheckoutContext from "contexts/CheckoutContext";
+import ShoppingCartContext from "contexts/ShoppingCartContext";
 
-import { setCheckoutLocalStorage, currencyFormat } from "utils.js";
+import { setShoppingCartLocalStorage, currencyFormat } from "utils.js";
 
 const ProductCardComponent = (props) => {
   const { product, isAdmin, onEdit, onDelete } = props;
 
-  const [checkoutContext, setCheckoutContext] = useContext(CheckoutContext);
+  const [shoppingCartContext, setShoppingCartContext] =
+    useContext(ShoppingCartContext);
 
   const handleOnClickAdd = (product) => {
-    const checkout = [...checkoutContext];
+    const shoppingCart = [...shoppingCartContext];
 
-    checkout.push(product);
-    setCheckoutContext(checkout);
-    setCheckoutLocalStorage(checkout);
+    shoppingCart.push(product);
+    setShoppingCartContext(shoppingCart);
+    setShoppingCartLocalStorage(shoppingCart);
     toast.success("Success! The product has been added to shopping cart.");
   };
 
