@@ -6,13 +6,32 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
 import { saveProduct, updateProduct } from "api/productsApi";
+
+// Validation schema
+const schemaProductInfo = yup
+  .object({
+    name: yup.string().trim().required(),
+    price: yup.number().positive().min(1).truncate(2).required(),
+    imageUrl: yup.string().trim().required().url(),
+    description: yup.string().trim(),
+  })
+  .required();
 
 const ProductModalComponent = (props) => {
   const { show, product, category, onClose, onSaved, onUpdated } = props;
 
-  const { register, handleSubmit, reset } = useForm();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schemaProductInfo),
+  });
 
   const [isSaving, setIsSaving] = useState(false);
 
@@ -73,12 +92,32 @@ const ProductModalComponent = (props) => {
         <Modal.Body>
           <Form.Group controlId="name" className="required">
             <Form.Label>Name</Form.Label>
-            <Form.Control type="text" name="name" {...register("name")} />
+            <Form.Control
+              type="text"
+              name="name"
+              {...register("name")}
+              isInvalid={errors.name}
+            />
+            {errors.name && (
+              <Form.Control.Feedback type="invalid">
+                {errors.name?.message}
+              </Form.Control.Feedback>
+            )}
           </Form.Group>
 
           <Form.Group controlId="price" className="required">
             <Form.Label>Price</Form.Label>
-            <Form.Control type="number" name="price" {...register("price")} />
+            <Form.Control
+              type="string"
+              name="price"
+              {...register("price")}
+              isInvalid={errors.price}
+            />
+            {errors.price && (
+              <Form.Control.Feedback type="invalid">
+                {errors.price?.message}
+              </Form.Control.Feedback>
+            )}
           </Form.Group>
 
           <Form.Group controlId="imageUrl" className="required">
@@ -87,7 +126,13 @@ const ProductModalComponent = (props) => {
               type="text"
               name="imageUrl"
               {...register("imageUrl")}
+              isInvalid={errors.imageUrl}
             />
+            {errors.imageUrl && (
+              <Form.Control.Feedback type="invalid">
+                {errors.imageUrl?.message}
+              </Form.Control.Feedback>
+            )}
           </Form.Group>
 
           <Form.Group controlId="description">
@@ -97,7 +142,13 @@ const ProductModalComponent = (props) => {
               rows={3}
               name="description"
               {...register("description")}
+              isInvalid={errors.description}
             />
+            {errors.description && (
+              <Form.Control.Feedback type="invalid">
+                {errors.description?.message}
+              </Form.Control.Feedback>
+            )}
           </Form.Group>
         </Modal.Body>
         <Modal.Footer>

@@ -25,7 +25,11 @@ const ProductCardComponent = (props) => {
 
   return (
     <Card className="text-center" style={{ width: "18rem" }}>
-      <Card.Img variant="top" src={product.imageUrl} />
+      <Card.Img
+        variant="top"
+        src={product.imageUrl}
+        style={{ maxHeight: "200px", objectFit: "scale-down" }}
+      />
       <Card.Body>
         <Card.Title>{product.name}</Card.Title>
         <Card.Text>{currencyFormat(product.price)}</Card.Text>

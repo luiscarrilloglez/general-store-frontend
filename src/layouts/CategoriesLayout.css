@@ -69,6 +69,14 @@ a:hover {
 
 /* Form Controls */
 
+.form-control-without-label {
+  margin-top: 1rem;
+}
+
+.form-control-without-label::placeholder {
+  font-size: 14px;
+}
+
 .form-group.required .form-label:after {
   font-size: 1rem;
   color: var(--red-color);
@@ -93,22 +101,8 @@ button:focus {
 
 /* Form Validations */
 
-.form-control.is-invalid,
-.was-validated .form-control:invalid {
-  border-color: var(--warning-color);
-  padding-right: 0.875rem;
-  background-image: none;
-}
-
-.form-control.is-invalid:focus,
-.was-validated .form-control:invalid:focus {
-  border-color: var(--red-color);
-  box-shadow: none;
-}
-
-.invalid-feedback {
-  color: var(--red-color);
-  font-size: 0.75rem;
+.invalid-feedback::first-letter {
+  text-transform: capitalize;
 }
 
 /* Footer */
