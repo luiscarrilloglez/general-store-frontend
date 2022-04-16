@@ -15,8 +15,8 @@ import { saveProduct, updateProduct } from "api/productsApi";
 const schemaProductInfo = yup
   .object({
     name: yup.string().trim().required(),
-    price: yup.number().positive().min(1).truncate(2).required(),
-    imageUrl: yup.string().trim().required().url(),
+    price: yup.number().positive().integer().required(),
+    imageUrl: yup.string().trim().url().required(),
     description: yup.string().trim(),
   })
   .required();

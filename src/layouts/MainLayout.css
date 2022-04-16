@@ -40,7 +40,6 @@
 
 h1 {
   color: var(--white-color);
-  font-size: 1.75rem;
   font-weight: bold;
   text-shadow: 2px 2px black;
 }
@@ -85,8 +84,17 @@ a:hover {
 }
 
 .card {
-  margin: 6px 6px;
-  border-radius: 5px;
+  border-radius: 6px;
+}
+
+.card-header {
+  padding: 20px 0px 10px 0px;
+  vertical-align: middle !important;
+}
+
+.card-footer {
+  padding: 20px 0px;
+  background-color: var(--white);
 }
 
 .withoutborder {

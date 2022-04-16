@@ -39,7 +39,9 @@ const ProductCardComponent = (props) => {
         }}
       />
       <Card.Body>
-        <Card.Title>{product.name}</Card.Title>
+        <Card.Title>
+          <strong>{product.name}</strong>
+        </Card.Title>
         <Card.Text>{currencyFormat(product.price)}</Card.Text>
         {isAdmin ? (
           <>

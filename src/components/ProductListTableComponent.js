@@ -52,7 +52,7 @@ const ProductListTableComponent = (props) => {
         {products.map((product) => {
           return (
             <tr key={product._id} style={{ verticalAlign: "middle" }}>
-              <td>
+              <td className="d-flex justify-content-center align-items-center">
                 <img
                   src={product.imageUrl}
                   alt={product.name}
@@ -62,7 +62,7 @@ const ProductListTableComponent = (props) => {
                     marginRight: "1rem",
                   }}
                 />
-                {product.name}
+                <strong>{product.name}</strong>
               </td>
               <td>{currencyFormat(product.price)}</td>
               <td>

@@ -83,7 +83,9 @@ const CheckoutPage = () => {
                     <Card.Title>TOTAL AMOUNT</Card.Title>
                   </Card.Header>
                   <Card.Body>
-                    <Card.Text>Total {currencyFormat(totalAmount())}</Card.Text>
+                    <Card.Text>
+                      <strong>Total: {currencyFormat(totalAmount())}</strong>
+                    </Card.Text>
                   </Card.Body>
                 </Card>
               </Col>
