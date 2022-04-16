@@ -49,7 +49,7 @@ const ProductListTableComponent = (props) => {
         </tr>
       </thead>
       <tbody>
-        {products.map((product) => {
+        {products.map((product, index) => {
           return (
             <tr key={product._id} style={{ verticalAlign: "middle" }}>
               <td className="d-flex justify-content-center align-items-center">
@@ -69,7 +69,7 @@ const ProductListTableComponent = (props) => {
                 <Button
                   variant="danger"
                   title="Delete product from your shopping cart"
-                  onClick={(index) => handleOnClickDelete(index)}
+                  onClick={() => handleOnClickDelete(index)}
                 >
                   X
                 </Button>
