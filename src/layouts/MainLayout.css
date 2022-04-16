@@ -97,11 +97,11 @@ a:hover {
   background-color: var(--white);
 }
 
-.withoutborder {
+.without-border {
   border: var(--white-color);
 }
 
-.CardShadow {
+.card-shadow {
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
 }
 

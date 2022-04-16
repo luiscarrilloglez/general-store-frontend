@@ -59,7 +59,6 @@ const ProductListTableComponent = (props) => {
                   style={{
                     maxWidth: "100px",
                     maxHeight: "100px",
-                    marginRight: "1rem",
                   }}
                 />
                 <strong>{product.name}</strong>

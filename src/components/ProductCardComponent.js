@@ -27,7 +27,7 @@ const ProductCardComponent = (props) => {
 
   return (
     <Card
-      className="text-center withoutborder"
+      className="text-center without-border"
       style={{ width: "18rem", height: "24rem" }}
     >
       <Card.Img

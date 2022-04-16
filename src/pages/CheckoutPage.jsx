@@ -78,13 +78,15 @@ const CheckoutPage = () => {
 
             <Row>
               <Col md={4} className="order-md-last mt-5 text-center">
-                <Card bg="light" border="dark">
+                <Card bg="light" className="card-shadow ">
                   <Card.Header>
                     <Card.Title>TOTAL AMOUNT</Card.Title>
                   </Card.Header>
-                  <Card.Body>
+                  <Card.Body className="py-5">
                     <Card.Text>
-                      <strong>Total: {currencyFormat(totalAmount())}</strong>
+                      <h3>
+                        Total: <strong>{currencyFormat(totalAmount())}</strong>
+                      </h3>
                     </Card.Text>
                   </Card.Body>
                 </Card>
