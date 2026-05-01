@@ -1,3 +1,4 @@
+import { useLocation } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
@@ -12,22 +13,20 @@ const MainLayout = (WrappedComponent, props) => {
   const { shoppingCartContext, isAdmin } = props;
 
   return () => {
-    const pathIsActive = (match, location, categoryKey) => {
-      if (!match || location.search !== `?category=${categoryKey}`) {
-        return false;
-      }
-
-      return true;
-    };
+    const location = useLocation();
 
     const collectionLink = (category) => {
+      const linkPath = `/${isAdmin ? "admin/" : ""}collections`;
+      const linkSearch = `?category=${category.key}`;
+
       return (
         <NavLink
-          className="nav-link"
-          to={`/${isAdmin ? "admin/" : ""}collections?category=${category.key}`}
-          isActive={(match, location) =>
-            pathIsActive(match, location, category.key)
+          key={category.key}
+          className={({ isActive }) =>
+            `nav-link${isActive && location.search === linkSearch ? " active" : ""}`
           }
+          to={`${linkPath}${linkSearch}`}
+          end
         >
           {category.label}
         </NavLink>
@@ -55,7 +54,7 @@ const MainLayout = (WrappedComponent, props) => {
                 {collectionLink(categories.ACCESSORIES)}
 
                 {!isAdmin && (
-                  <NavLink className="nav-link" to="/checkout">
+                  <NavLink className="nav-link" to="/checkout" end>
                     <Image src="/assets/shopping_cart.png" alt="Rancho el 17" />
                     <Badge bg="danger">
                       {shoppingCartContext?.length ?? 0}

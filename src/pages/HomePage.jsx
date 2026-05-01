@@ -1,6 +1,6 @@
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { useIsAdmin } from "hooks/useQuery";
 import { categories } from "constants.js";
@@ -8,7 +8,7 @@ import { categories } from "constants.js";
 import styles from "pages/styles.module.css";
 
 const HomePage = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const isAdmin = useIsAdmin();
 
   const categoryKeys = Object.keys(categories);
@@ -18,7 +18,7 @@ const HomePage = () => {
       <div
         className={styles.HomeImage}
         onClick={() =>
-          history.push({
+          navigate({
             pathname: `/${isAdmin ? "admin/" : ""}collections`,
             search: `?category=${category.key}`,
           })
