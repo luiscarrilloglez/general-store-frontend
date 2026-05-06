@@ -21,6 +21,10 @@
     "web-vitals": "^4.2.4",
     "yup": "^1.6.1"
   },
+  "overrides": {
+    "ajv": "^6.12.6",
+    "ajv-keywords": "^3.5.2"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
