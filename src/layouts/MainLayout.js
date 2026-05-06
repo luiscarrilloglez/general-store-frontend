@@ -1,10 +1,9 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, Link, NavLink } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Image from "react-bootstrap/Image";
 import Badge from "react-bootstrap/Badge";
-import { Link, NavLink } from "react-router-dom";
 
 import { categories } from "constants.js";
 import "layouts/MainLayout.css";
