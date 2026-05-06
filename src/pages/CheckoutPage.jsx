@@ -3,7 +3,7 @@ import { useContext, useState } from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import ShoppingCartContext from "contexts/ShoppingCartContext";
@@ -19,7 +19,7 @@ const CheckoutPage = () => {
 
   const [shoppingCartContext, setShoppingCartContext] =
     useContext(ShoppingCartContext);
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const totalAmount = () => {
     return shoppingCartContext.reduce(
@@ -47,7 +47,7 @@ const CheckoutPage = () => {
 
       setIsSaving(false);
 
-      history.push("/");
+      navigate("/");
     } catch (error) {
       toast.error(
         "Error! An error occurred while adding the product information, please try again."
