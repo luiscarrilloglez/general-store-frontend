@@ -25,8 +25,8 @@
     "ajv": "^6.12.6",
     "ajv-keywords": "^3.5.2",
     "schema-utils": "^3.3.0",
-    "resolve-url-loader": {
-      "schema-utils": "^1.0.0"
+    "babel-loader": {
+      "schema-utils": "^2.7.1"
     }
   },
   "scripts": {
