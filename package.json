@@ -24,8 +24,10 @@
   "overrides": {
     "ajv": "^6.12.6",
     "ajv-keywords": "^3.5.2",
-    "ajv-formats": "^1.1.0",
-    "schema-utils": "^3.3.0"
+    "schema-utils": "^3.3.0",
+    "resolve-url-loader": {
+      "schema-utils": "^1.0.0"
+    }
   },
   "scripts": {
     "start": "react-scripts start",
